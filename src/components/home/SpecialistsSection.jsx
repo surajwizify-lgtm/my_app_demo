@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import theme from '@/styles/theme'
 import SectionHeader from '@/components/common/SectionHeader'
 import Avatar from '@/components/common/Avatar'
@@ -44,9 +45,13 @@ export default function SpecialistsSection() {
         <div>
             <SectionHeader title="Top Specialists" actionLabel="See All" onAction={() => { }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.sm }}>
-                {specialists.map((doctor) => (
-                    <div
+                {specialists.map((doctor, index) => (
+                    <motion.div
                         key={doctor.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1, duration: 0.4, ease: 'easeOut' }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={() => { }}
                         style={{
                             backgroundColor: theme.colors.white,
@@ -115,7 +120,7 @@ export default function SpecialistsSection() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

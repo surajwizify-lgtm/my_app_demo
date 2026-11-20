@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import theme from '@/styles/theme'
 import SectionHeader from '@/components/common/SectionHeader'
 import Badge from '@/components/common/Badge'
@@ -12,6 +13,7 @@ const articles = [
         views: '2.3k',
         variant: 'danger',
         color: '#FEF2F2',
+        emoji: '❤️',
     },
     {
         id: 2,
@@ -21,6 +23,7 @@ const articles = [
         views: '4.1k',
         variant: 'primary',
         color: theme.colors.primaryLight,
+        emoji: '🩺',
     },
     {
         id: 3,
@@ -30,6 +33,7 @@ const articles = [
         views: '1.8k',
         variant: 'secondary',
         color: theme.colors.secondaryLight,
+        emoji: '👁️',
     },
 ]
 
@@ -46,9 +50,13 @@ export default function HealthArticlesSection() {
                     paddingBottom: '4px',
                 }}
             >
-                {articles.map((article) => (
-                    <div
+                {articles.map((article, index) => (
+                    <motion.div
                         key={article.id}
+                        initial={{ opacity: 0, x: 40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1, duration: 0.4, ease: 'easeOut' }}
+                        whileTap={{ scale: 0.97 }}
                         onClick={() => { }}
                         style={{
                             minWidth: '220px',
@@ -69,9 +77,7 @@ export default function HealthArticlesSection() {
                                 justifyContent: 'center',
                             }}
                         >
-                            <span style={{ fontSize: '40px' }}>
-                                {article.category === 'Cardiology' ? '❤️' : article.category === 'General' ? '🩺' : '👁️'}
-                            </span>
+                            <span style={{ fontSize: '40px' }}>{article.emoji}</span>
                         </div>
                         <div style={{ padding: theme.spacing.sm }}>
                             <Badge label={article.category} variant={article.variant} size="sm" />
@@ -101,7 +107,7 @@ export default function HealthArticlesSection() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

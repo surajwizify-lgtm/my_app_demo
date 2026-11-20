@@ -1,10 +1,13 @@
+import { motion } from 'framer-motion'
 import { Phone, Ambulance } from 'lucide-react'
 import theme from '@/styles/theme'
-import Card from '@/components/common/Card'
 
 export default function EmergencySection() {
     return (
-        <div
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
             style={{
                 background: `linear-gradient(135deg, ${theme.colors.danger} 0%, #C0392B 100%)`,
                 borderRadius: theme.borderRadius.xl,
@@ -49,7 +52,8 @@ export default function EmergencySection() {
                 >
                     Call emergency services immediately
                 </p>
-                <div
+                <motion.div
+                    whileTap={{ scale: 0.95 }}
                     onClick={() => window.open('tel:911')}
                     style={{
                         display: 'inline-flex',
@@ -68,9 +72,11 @@ export default function EmergencySection() {
                 >
                     <Phone size={16} />
                     Call 911
-                </div>
+                </motion.div>
             </div>
-            <div
+            <motion.div
+                animate={{ rotate: [0, -10, 10, -10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
                 style={{
                     width: '80px',
                     height: '80px',
@@ -83,7 +89,7 @@ export default function EmergencySection() {
                 }}
             >
                 <Ambulance size={40} color={theme.colors.white} />
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }

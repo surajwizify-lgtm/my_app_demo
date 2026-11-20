@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import theme from '@/styles/theme'
 import SectionHeader from '@/components/common/SectionHeader'
 import Badge from '@/components/common/Badge'
@@ -38,7 +39,11 @@ export default function CampaignSection() {
     const [active, setActive] = useState(0)
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+        >
             <SectionHeader title="Campaigns" actionLabel="See All" onAction={() => { }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.sm }}>
                 <div
@@ -51,8 +56,12 @@ export default function CampaignSection() {
                     }}
                 >
                     {campaigns.map((campaign, index) => (
-                        <div
+                        <motion.div
                             key={campaign.id}
+                            initial={{ opacity: 0, x: 40 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1, duration: 0.4, ease: 'easeOut' }}
+                            whileTap={{ scale: 0.98 }}
                             onClick={() => setActive(index)}
                             style={{
                                 minWidth: '280px',
@@ -123,24 +132,26 @@ export default function CampaignSection() {
                                     <ChevronRight size={14} color={theme.colors.white} />
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '6px' }}>
                     {campaigns.map((_, index) => (
-                        <div
+                        <motion.div
                             key={index}
-                            style={{
+                            animate={{
                                 width: active === index ? '20px' : '6px',
+                                backgroundColor: active === index ? theme.colors.primary : theme.colors.border,
+                            }}
+                            transition={{ duration: 0.3 }}
+                            style={{
                                 height: '6px',
                                 borderRadius: theme.borderRadius.full,
-                                backgroundColor: active === index ? theme.colors.primary : theme.colors.border,
-                                transition: 'all 0.3s ease',
                             }}
                         />
                     ))}
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

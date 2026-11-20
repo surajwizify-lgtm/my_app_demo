@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Heart, Brain, Bone, Eye, Baby, Stethoscope, Pill, Microscope } from 'lucide-react'
 import theme from '@/styles/theme'
 import SectionHeader from '@/components/common/SectionHeader'
@@ -24,9 +25,13 @@ export default function DepartmentsSection() {
                     gap: theme.spacing.sm,
                 }}
             >
-                {departments.map(({ label, icon: Icon, color, bg }) => (
-                    <div
+                {departments.map(({ label, icon: Icon, color, bg }, index) => (
+                    <motion.div
                         key={label}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.07, duration: 0.3, ease: 'easeOut' }}
+                        whileTap={{ scale: 0.92 }}
                         onClick={() => { }}
                         style={{
                             display: 'flex',
@@ -60,7 +65,7 @@ export default function DepartmentsSection() {
                         >
                             {label}
                         </span>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>

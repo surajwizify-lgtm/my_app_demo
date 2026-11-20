@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import theme from '@/styles/theme'
 import SectionHeader from '@/components/common/SectionHeader'
 import { Heart, Brain, Bone, Eye, Baby, Stethoscope, Pill, Microscope } from 'lucide-react'
@@ -18,9 +19,13 @@ export default function ArticlesCategorySection() {
         <div>
             <SectionHeader title="Browse by Category" actionLabel="See All" onAction={() => { }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.sm }}>
-                {categories.map(({ label, icon: Icon, color, bg, count }) => (
-                    <div
+                {categories.map(({ label, icon: Icon, color, bg, count }, index) => (
+                    <motion.div
                         key={label}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.07, duration: 0.3, ease: 'easeOut' }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={() => { }}
                         style={{
                             backgroundColor: theme.colors.white,
@@ -80,7 +85,7 @@ export default function ArticlesCategorySection() {
                         >
                             {count}
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>
