@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import theme from '@/styles/theme'
 import BottomNav from '@/components/common/BottomNav'
+import NextPageButton from '@/components/common/NextPageButton'  // ← add this
 
 export default function Layout() {
     const location = useLocation()
@@ -16,12 +17,13 @@ export default function Layout() {
                 position: 'relative',
             }}
         >
-            <div style={{ paddingBottom: '80px' }}>
+            <div style={{ paddingBottom: '0px' }}>
                 <AnimatePresence mode="wait">
                     <Outlet key={location.pathname} />
                 </AnimatePresence>
             </div>
-            <BottomNav />
+            {/* <BottomNav /> */}
+            <NextPageButton />  {/* ← add this */}
         </div>
     )
 }

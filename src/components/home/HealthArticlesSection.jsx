@@ -1,115 +1,63 @@
-import { motion } from 'framer-motion'
-import theme from '@/styles/theme'
-import SectionHeader from '@/components/common/SectionHeader'
-import Badge from '@/components/common/Badge'
-import { Clock, Eye } from 'lucide-react'
-
-const articles = [
-    {
-        id: 1,
-        title: '10 Tips for a Healthy Heart',
-        category: 'Cardiology',
-        readTime: '5 min read',
-        views: '2.3k',
-        variant: 'danger',
-        color: '#FEF2F2',
-        emoji: '❤️',
-    },
-    {
-        id: 2,
-        title: 'Understanding Diabetes: A Complete Guide',
-        category: 'General',
-        readTime: '8 min read',
-        views: '4.1k',
-        variant: 'primary',
-        color: theme.colors.primaryLight,
-        emoji: '🩺',
-    },
-    {
-        id: 3,
-        title: 'Benefits of Regular Eye Checkups',
-        category: 'Ophthalmology',
-        readTime: '4 min read',
-        views: '1.8k',
-        variant: 'secondary',
-        color: theme.colors.secondaryLight,
-        emoji: '👁️',
-    },
-]
-
-export default function HealthArticlesSection() {
-    return (
+{/* Health Articles */ }
+<section className="px-5 pt-6">
+    <div className="flex items-start justify-between mb-4">
         <div>
-            <SectionHeader title="Health Articles" actionLabel="See All" onAction={() => { }} />
-            <div
-                style={{
-                    display: 'flex',
-                    gap: theme.spacing.sm,
-                    overflowX: 'auto',
-                    scrollbarWidth: 'none',
-                    paddingBottom: '4px',
-                }}
+            <h2
+                className="text-[22px] font-extrabold text-[#102a43] tracking-tight"
+                style={{ fontFamily: 'Fraunces, serif' }}
             >
-                {articles.map((article, index) => (
-                    <motion.div
-                        key={article.id}
-                        initial={{ opacity: 0, x: 40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1, duration: 0.4, ease: 'easeOut' }}
-                        whileTap={{ scale: 0.97 }}
-                        onClick={() => { }}
-                        style={{
-                            minWidth: '220px',
-                            backgroundColor: theme.colors.white,
-                            borderRadius: theme.borderRadius.lg,
-                            overflow: 'hidden',
-                            boxShadow: '0px 2px 12px rgba(0,0,0,0.06)',
-                            cursor: 'pointer',
-                            flexShrink: 0,
-                        }}
-                    >
-                        <div
-                            style={{
-                                height: '100px',
-                                backgroundColor: article.color,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                            }}
-                        >
-                            <span style={{ fontSize: '40px' }}>{article.emoji}</span>
-                        </div>
-                        <div style={{ padding: theme.spacing.sm }}>
-                            <Badge label={article.category} variant={article.variant} size="sm" />
-                            <h4
-                                style={{
-                                    margin: `${theme.spacing.xs} 0`,
-                                    fontSize: theme.fontSizes.sm,
-                                    fontWeight: '700',
-                                    color: theme.colors.textPrimary,
-                                    lineHeight: '1.4',
-                                }}
-                            >
-                                {article.title}
-                            </h4>
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                    <Clock size={12} color={theme.colors.textMuted} />
-                                    <span style={{ fontSize: theme.fontSizes.xs, color: theme.colors.textMuted }}>
-                                        {article.readTime}
-                                    </span>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                    <Eye size={12} color={theme.colors.textMuted} />
-                                    <span style={{ fontSize: theme.fontSizes.xs, color: theme.colors.textMuted }}>
-                                        {article.views}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
+                Health articles
+            </h2>
+            <p className="text-[13px] text-[#627d98] mt-0.5">Get up-to-date on our latest health updates</p>
         </div>
-    )
-}
+        <button className="bg-[#e8eef8] text-[#0b5cab] font-bold text-[13.5px] px-4 py-2 rounded-full shrink-0">
+            View all
+        </button>
+    </div>
+
+    <div className="flex gap-4 overflow-x-auto -mx-5 px-5 pb-4 scrollbar-hide snap-x snap-mandatory">
+        {articles.map((a, i) => (
+            <div key={i} className="flex-none w-[88%] snap-start">
+                {/* Cover image area */}
+                <div
+                    className="w-full h-[220px] rounded-[20px] relative overflow-hidden"
+                    style={{ background: a.coverBg }}
+                >
+                    <span className="absolute top-3.5 left-3.5 bg-[#3a9e5f] text-white text-[13px] font-bold px-3 py-1.5 rounded-xl">
+                        {a.date}
+                    </span>
+                    <div className="absolute bottom-4 left-4 right-4">
+                        <p className="text-[22px] font-extrabold text-[#102a43] leading-tight whitespace-pre-line"
+                            style={{ fontFamily: 'Fraunces, serif' }}>
+                            {a.coverTitle}
+                        </p>
+                    </div>
+                </div>
+
+                {/* White card overlapping cover */}
+                <div className="bg-white rounded-[20px] shadow-md mx-2 -mt-5 relative z-10 px-4 pt-4 pb-5">
+                    <span className="inline-block bg-[#e8f5ee] text-[#3a9e5f] text-[12px] font-semibold px-3 py-1 rounded-full mb-3">
+                        {a.tag} · {a.date}
+                    </span>
+                    <div className="flex items-end justify-between gap-3">
+                        <p className="text-[15px] font-bold text-[#102a43] leading-snug flex-1">{a.title}</p>
+                        <button
+                            className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
+                            style={{ background: '#1a3fa8' }}
+                        >
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+
+    {/* Dot indicators */}
+    <div className="flex justify-center gap-2 mt-1">
+        <span className="w-5 h-2 rounded-full bg-[#1a3fa8]" />
+        <span className="w-2 h-2 rounded-full bg-[#c5d0e8]" />
+    </div>
+</section>
