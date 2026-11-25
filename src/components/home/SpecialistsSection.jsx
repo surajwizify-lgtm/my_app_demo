@@ -55,7 +55,7 @@ export default function SpecialistsSection() {
                 onAction={() => { }}
             />
 
-            <div className="flex flex-col gap-3 px-4">
+            <div className="flex flex-col gap-3">
                 {SPECIALTIES.map((specialty) => {
                     const isExpanded = expandedId === specialty.id
                     const Icon = specialty.icon

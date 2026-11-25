@@ -2,7 +2,7 @@ import theme from "@/styles/theme";
 
 export default function SectionHeader({ title, subtitle, actionLabel, onAction }) {
     return (
-        <div className="mb-4 flex items-end justify-between px-4">
+        <div className="mb-4 mt-5 flex items-start justify-between px-4">
             <div>
                 <h2
                     className="text-[22px] font-bold leading-tight"
@@ -20,7 +20,7 @@ export default function SectionHeader({ title, subtitle, actionLabel, onAction }
                 <button
                     type="button"
                     onClick={onAction}
-                    className="shrink-0 pb-1 text-[13px] font-bold transition-transform active:scale-95"
+                    className="shrink-0 border rounded-md p-1 text-[13px] font-bold transition-transform active:scale-95"
                     style={{ color: theme.colors.primary }}
                 >
                     {actionLabel}

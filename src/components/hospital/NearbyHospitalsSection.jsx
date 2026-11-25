@@ -1,4 +1,5 @@
-import { MapPin, Navigation, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Star, MapPin, Navigation, Phone } from "lucide-react";
 import theme from "@/styles/theme";
 
 const NEARBY = [
@@ -8,40 +9,85 @@ const NEARBY = [
 ];
 
 export default function NearbyHospitalsSection() {
+    const navigate = useNavigate();
+
     return (
         <div className="px-4 pb-4">
             <div className="mb-3 flex items-center justify-between">
-                <h2 className="text-base font-bold" style={{ color: theme.colors.textPrimary, fontFamily: "Fraunces, serif" }}>
+                <h2 className="text-base font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
                     Nearby Hospitals
                 </h2>
-                <span className="flex items-center gap-1 text-xs font-semibold" style={{ color: theme.colors.primary }}>
+                <span className="flex items-center gap-1 text-xs font-bold" style={{ color: theme.colors.secondary }}>
                     <Navigation size={12} /> Live
                 </span>
             </div>
-            <div className="flex flex-col gap-2">
+
+            <div className="flex flex-col gap-2.5">
                 {NEARBY.map((h) => (
                     <div
                         key={h.id}
-                        className="flex items-center gap-3 rounded-2xl p-3"
-                        style={{ backgroundColor: theme.colors.surface, border: `1px solid ${theme.colors.border}` }}
+                        onClick={() => navigate(`/hospitals/${h.id}`)}
+                        className="w-full cursor-pointer rounded-2xl p-3.5 active:scale-[0.98] transition-all"
+                        style={{
+                            backgroundColor: theme.colors.surface,
+                            border: `1px solid ${theme.colors.border}`,
+                            boxShadow: "0 4px 20px rgba(14,76,107,0.03)",
+                        }}
                     >
-                        <div
-                            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
-                            style={{ backgroundColor: theme.colors.primaryLight }}
-                        >
-                            <MapPin size={18} color={theme.colors.primary} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                            <h3 className="truncate text-sm font-bold" style={{ color: theme.colors.textPrimary }}>{h.name}</h3>
-                            <p className="truncate text-xs" style={{ color: theme.colors.textMuted }}>
-                                {h.location} • {h.specialties.join(", ")}
-                            </p>
-                        </div>
-                        <div className="flex flex-col items-end shrink-0">
-                            <span className="flex items-center gap-1 text-xs font-semibold" style={{ color: theme.colors.primary }}>
-                                <Star size={11} fill={theme.colors.primary} /> {h.rating}
+                        <div className="flex items-center justify-between mb-1">
+                            <h3 className="text-[14px] font-bold leading-tight" style={{ color: theme.colors.textPrimary }}>
+                                {h.name}
+                            </h3>
+                            <span className="text-[11px] font-bold flex items-center gap-0.5" style={{ color: theme.colors.accent }}>
+                                <Star size={11} fill={theme.colors.accent} color={theme.colors.accent} />
+                                {h.rating}
                             </span>
-                            <span className="text-[11px]" style={{ color: theme.colors.textMuted }}>{h.distance}</span>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 text-[11px] flex-wrap mb-2.5" style={{ color: theme.colors.textSecondary }}>
+                            <MapPin size={11} className="shrink-0" />
+                            <span>{h.location}</span>
+                            <span style={{ color: theme.colors.border }}>|</span>
+                            <span className="font-semibold" style={{ color: theme.colors.secondary }}>{h.distance}</span>
+                            <span style={{ color: theme.colors.border }}>|</span>
+                            <span className="font-bold" style={{ color: theme.colors.success }}>Open</span>
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                            <div className="flex gap-1.5 flex-wrap">
+                                {h.specialties.map((s) => (
+                                    <span
+                                        key={s}
+                                        className="rounded-md px-2 py-0.5 text-[10px] font-bold"
+                                        style={{
+                                            backgroundColor: theme.colors.background,
+                                            color: theme.colors.textSecondary,
+                                            border: `1px solid ${theme.colors.border}`,
+                                        }}
+                                    >
+                                        {s}
+                                    </span>
+                                ))}
+                            </div>
+
+                            <div className="flex gap-2 shrink-0">
+                                <button
+                                    type="button"
+                                    onClick={(e) => { e.stopPropagation(); window.open('tel:+911234567890'); }}
+                                    className="w-8 h-8 rounded-full flex items-center justify-center active:scale-95 transition-transform"
+                                    style={{ backgroundColor: theme.colors.primaryLight, border: `1px solid ${theme.colors.border}` }}
+                                >
+                                    <Phone size={13} color={theme.colors.primary} />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={(e) => { e.stopPropagation(); window.open('https://maps.google.com'); }}
+                                    className="w-8 h-8 rounded-full flex items-center justify-center active:scale-95 transition-transform"
+                                    style={{ backgroundColor: theme.colors.primary }}
+                                >
+                                    <Navigation size={13} color="#fff" />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 ))}

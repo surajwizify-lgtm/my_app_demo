@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Building2, Star, MapPin, ChevronRight, Clock } from "lucide-react";
+import { Star, MapPin, Phone, Navigation } from "lucide-react";
 import theme from "@/styles/theme";
 
 const HOSPITALS = [
@@ -17,74 +17,85 @@ export default function HospitalListSection() {
     return (
         <div className="px-4 pb-4">
             <div className="mb-3 flex items-center justify-between">
-                <h2 className="text-base font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
+                <h2 className="text-lg font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
                     All Hospitals
                 </h2>
-                <span className="text-xs" style={{ color: theme.colors.textMuted }}>{HOSPITALS.length} results</span>
+                <span
+                    className="rounded-full px-2.5 py-0.5 text-[11px] font-bold"
+                    style={{ backgroundColor: theme.colors.primaryLight, color: theme.colors.primary }}
+                >
+                    {HOSPITALS.length} results
+                </span>
             </div>
-            <div className="flex flex-col gap-3">
+
+            <div className="flex flex-col gap-2.5">
                 {HOSPITALS.map((h) => (
-                    <button
+                    <div
                         key={h.id}
-                        type="button"
                         onClick={() => navigate(`/hospitals/${h.id}`)}
-                        className="w-full rounded-2xl p-4 text-left transition-transform active:scale-[0.99]"
+                        className="w-full cursor-pointer rounded-2xl p-3.5 active:scale-[0.98] transition-all"
                         style={{
                             backgroundColor: theme.colors.surface,
                             border: `1px solid ${theme.colors.border}`,
-                            boxShadow: theme.shadows.soft,
+                            boxShadow: "0 4px 20px rgba(14,76,107,0.03)",
                         }}
                     >
-                        <div className="flex items-start gap-3">
-                            <div
-                                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl"
-                                style={{ background: `linear-gradient(135deg, ${theme.colors.primaryLight}, ${theme.colors.secondaryLight})` }}
-                            >
-                                <Building2 size={22} color={theme.colors.primary} strokeWidth={2} />
-                            </div>
-                            <div className="min-w-0 flex-1">
-                                <div className="flex items-start justify-between gap-2">
-                                    <h3 className="text-[15px] font-bold leading-tight" style={{ color: theme.colors.textPrimary }}>
-                                        {h.name}
-                                    </h3>
+                        <div className="flex items-center justify-between mb-1">
+                            <h3 className="text-[15px] font-bold leading-tight" style={{ color: theme.colors.textPrimary }}>
+                                {h.name}
+                            </h3>
+                            <span className="text-[11px] font-bold flex items-center gap-0.5" style={{ color: theme.colors.accent }}>
+                                <Star size={11} fill={theme.colors.accent} color={theme.colors.accent} />
+                                {h.rating}
+                            </span>
+                        </div>
+
+                        <div className="flex items-center gap-1.5 text-[11px] flex-wrap mb-2.5" style={{ color: theme.colors.textSecondary }}>
+                            <MapPin size={11} className="shrink-0" />
+                            <span>{h.location}</span>
+                            <span style={{ color: theme.colors.border }}>|</span>
+                            <span className="font-semibold" style={{ color: theme.colors.secondary }}>{h.distance}</span>
+                            <span style={{ color: theme.colors.border }}>|</span>
+                            <span className="font-bold" style={{ color: theme.colors.success }}>Open</span>
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                            <div className="flex gap-1.5 flex-wrap">
+                                {h.specialties.map((s) => (
                                     <span
-                                        className="flex shrink-0 items-center gap-0.5 rounded-full px-2 py-0.5 text-[11px] font-bold"
-                                        style={{ backgroundColor: theme.colors.accentLight, color: theme.colors.textPrimary }}
+                                        key={s}
+                                        className="rounded-md px-2 py-0.5 text-[10px] font-bold"
+                                        style={{
+                                            backgroundColor: theme.colors.background,
+                                            color: theme.colors.textSecondary,
+                                            border: `1px solid ${theme.colors.border}`,
+                                        }}
                                     >
-                                        <Star size={10} fill={theme.colors.accent} color={theme.colors.accent} /> {h.rating}
+                                        {s}
                                     </span>
-                                </div>
-                                <div className="mt-1 flex items-center gap-1 text-[11px]" style={{ color: theme.colors.textMuted }}>
-                                    <MapPin size={11} />
-                                    <span>{h.location}</span>
-                                    <span>•</span>
-                                    <span className="font-semibold" style={{ color: theme.colors.secondary }}>{h.distance}</span>
-                                </div>
+                                ))}
+                            </div>
+
+                            <div className="flex gap-2 shrink-0">
+                                <button
+                                    type="button"
+                                    onClick={(e) => { e.stopPropagation(); window.open('tel:+911234567890'); }}
+                                    className="w-8 h-8 rounded-full flex items-center justify-center active:scale-95 transition-transform"
+                                    style={{ backgroundColor: theme.colors.primaryLight, border: `1px solid ${theme.colors.border}` }}
+                                >
+                                    <Phone size={13} color={theme.colors.primary} />
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={(e) => { e.stopPropagation(); window.open('https://maps.google.com'); }}
+                                    className="w-8 h-8 rounded-full flex items-center justify-center active:scale-95 transition-transform"
+                                    style={{ backgroundColor: theme.colors.primary }}
+                                >
+                                    <Navigation size={13} color="#fff" />
+                                </button>
                             </div>
                         </div>
-                        <div className="mt-3 flex flex-wrap gap-1.5">
-                            {h.specialties.map((s) => (
-                                <span
-                                    key={s}
-                                    className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold"
-                                    style={{ backgroundColor: theme.colors.primaryLight, color: theme.colors.primary }}
-                                >
-                                    {s}
-                                </span>
-                            ))}
-                        </div>
-                        <div
-                            className="mt-3 flex items-center justify-between pt-3"
-                            style={{ borderTop: `1px solid ${theme.colors.border}` }}
-                        >
-                            <span className="flex items-center gap-1 text-[11px] font-semibold" style={{ color: theme.colors.success }}>
-                                <Clock size={11} /> Open Now
-                            </span>
-                            <span className="flex items-center gap-0.5 text-[11px] font-semibold" style={{ color: theme.colors.primary }}>
-                                View Details <ChevronRight size={13} />
-                            </span>
-                        </div>
-                    </button>
+                    </div>
                 ))}
             </div>
         </div>

@@ -8,7 +8,7 @@ export default function HospitalsPage() {
     return (
         <div style={{ margin: "0 auto", position: "relative", minHeight: "100vh" }}>
             <HospitalSearchSection />
-            <HospitalFiltersSection />
+            {/* <HospitalFiltersSection /> */}
             <FeaturedHospitalsSection />
             <NearbyHospitalsSection />
             <HospitalListSection />
