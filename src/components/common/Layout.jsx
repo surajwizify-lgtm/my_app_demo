@@ -10,7 +10,7 @@ export default function Layout() {
     return (
         <div
             style={{
-                maxWidth: '390px',
+                maxWidth: '500px',
                 margin: '0 auto',
                 backgroundColor: theme.colors.background,
                 minHeight: '100vh',
