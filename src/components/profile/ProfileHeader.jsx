@@ -3,64 +3,55 @@ import theme from "@/styles/theme";
 
 export default function ProfileHeader({ user, isEditing, onToggleEdit, onCancel }) {
     return (
-        <div className="pb-3">
-            <div
-                className="relative h-24 w-full"
-                style={{ background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})` }}
-            >
-                <div className="absolute left-4 top-3">
-                    <h1 className="text-base font-bold text-white" style={{ fontFamily: theme.fonts.heading }}>
-                        My Profile
-                    </h1>
-                </div>
-            </div>
+        <div
+            className="relative overflow-hidden px-5 pt-12 pb-6"
+            style={{ background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})` }}
+        >
+            <div className="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-white/10" />
+            <div className="absolute -left-4 bottom-0 h-20 w-20 rounded-full bg-white/5" />
 
-            <div className="relative z-10 -mt-8 px-4">
-                <div
-                    className="flex flex-col items-center rounded-2xl p-4"
-                    style={{ backgroundColor: theme.colors.surface, boxShadow: theme.shadows.card }}
-                >
-                    <div className="relative mb-2">
-                        <div
-                            className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2"
-                            style={{ borderColor: theme.colors.surface, backgroundColor: theme.colors.primaryLight }}
-                        >
-                            {user.avatar ? (
-                                <img src={user.avatar} alt={user.name} className="h-full w-full object-cover" />
-                            ) : (
-                                <User size={24} color={theme.colors.primary} />
-                            )}
-                        </div>
-                        {isEditing && (
-                            <button
-                                type="button"
-                                className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full border shadow-sm"
-                                style={{ backgroundColor: theme.colors.surface, borderColor: theme.colors.border }}
-                            >
-                                <Camera size={10} color={theme.colors.primary} />
-                            </button>
+            <div className="relative z-10 flex items-center gap-4">
+                <div className="relative shrink-0">
+                    <div
+                        className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2"
+                        style={{ borderColor: "rgba(255,255,255,0.4)", backgroundColor: "rgba(255,255,255,0.15)" }}
+                    >
+                        {user.avatar ? (
+                            <img src={user.avatar} alt={user.name} className="h-full w-full object-cover" />
+                        ) : (
+                            <User size={26} color="#fff" />
                         )}
                     </div>
+                    {isEditing && (
+                        <button
+                            type="button"
+                            className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full border shadow-sm"
+                            style={{ backgroundColor: theme.colors.surface, borderColor: theme.colors.border }}
+                        >
+                            <Camera size={11} color={theme.colors.primary} />
+                        </button>
+                    )}
+                </div>
 
+                <div className="flex-1 min-w-0">
                     <h2
-                        className="text-center text-[15px] font-bold leading-tight"
-                        style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}
+                        className="truncate text-[17px] font-bold text-white leading-tight"
+                        style={{ fontFamily: theme.fonts.heading }}
                     >
                         {user.name}
                     </h2>
-                    <p className="mt-0.5 text-center text-[11px] font-medium" style={{ color: theme.colors.textSecondary }}>
+                    <p className="truncate text-[11px] text-white/70 mt-0.5">
                         {user.phone}
                     </p>
-
-                    <div className="mt-3 flex w-full gap-2">
+                    <div className="mt-2.5 flex gap-2">
                         {!isEditing ? (
                             <button
                                 type="button"
                                 onClick={onToggleEdit}
-                                className="flex w-full items-center justify-center gap-1.5 rounded-full py-2 text-[11px] font-bold transition-transform active:scale-95"
-                                style={{ backgroundColor: theme.colors.primaryLight, color: theme.colors.primary }}
+                                className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[11px] font-bold transition-transform active:scale-95"
+                                style={{ backgroundColor: "rgba(255,255,255,0.2)", color: "#fff" }}
                             >
-                                <Edit2 size={12} />
+                                <Edit2 size={11} />
                                 Edit Profile
                             </button>
                         ) : (
@@ -68,19 +59,19 @@ export default function ProfileHeader({ user, isEditing, onToggleEdit, onCancel 
                                 <button
                                     type="button"
                                     onClick={onCancel}
-                                    className="flex flex-1 items-center justify-center gap-1.5 rounded-full py-2 text-[11px] font-bold transition-transform active:scale-95"
-                                    style={{ backgroundColor: theme.colors.dangerLight, color: theme.colors.danger }}
+                                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[11px] font-bold transition-transform active:scale-95"
+                                    style={{ backgroundColor: "rgba(255,255,255,0.15)", color: "#fff" }}
                                 >
-                                    <X size={12} />
+                                    <X size={11} />
                                     Cancel
                                 </button>
                                 <button
                                     type="button"
                                     onClick={onToggleEdit}
-                                    className="flex flex-1 items-center justify-center gap-1.5 rounded-full py-2 text-[11px] font-bold text-white transition-transform active:scale-95"
-                                    style={{ backgroundColor: theme.colors.primary }}
+                                    className="flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[11px] font-bold transition-transform active:scale-95"
+                                    style={{ backgroundColor: "#fff", color: theme.colors.primary }}
                                 >
-                                    <Check size={12} />
+                                    <Check size={11} />
                                     Save
                                 </button>
                             </>

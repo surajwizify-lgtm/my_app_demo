@@ -2,40 +2,51 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import theme from '@/styles/theme'
 import SectionHeader from '@/components/common/SectionHeader'
-import { Calendar, ChevronRight } from 'lucide-react'
+import { Calendar, Tag, Copy } from 'lucide-react'
 
 const campaigns = [
     {
         id: 1,
-        title: 'Free Blood Pressure Checkup',
-        subtitle: 'Limited slots available',
-        date: 'Dec 15, 2024',
-        label: 'Free',
-        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
+        title: 'Health Quest Lab Test Discount',
+        date: 'Dec 31, 2026',
+        label: '40% OFF',
+        coupon: 'COUPON_40',
+        image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80',
         accent: '#1A56DB',
+        accentLight: '#EEF2FF',
     },
     {
         id: 2,
         title: '50% Off Dental Checkup',
-        subtitle: 'All partnered clinics',
-        date: 'Dec 20, 2024',
-        label: '50% Off',
-        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
+        date: 'Dec 20, 2026',
+        label: '50% OFF',
+        coupon: 'DENTAL50',
+        image: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80',
         accent: '#059669',
+        accentLight: '#ECFDF5',
     },
     {
         id: 3,
         title: 'Free Eye Screening Camp',
-        subtitle: 'Walk-in welcome',
-        date: 'Dec 25, 2024',
+        date: 'Dec 25, 2026',
         label: 'Free',
+        coupon: 'EYECAMP',
         image: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=600&q=80',
         accent: '#D97706',
+        accentLight: '#FFFBEB',
     },
 ]
 
 export default function CampaignSection() {
     const [active, setActive] = useState(0)
+    const [copied, setCopied] = useState(null)
+
+    const handleCopy = (e, coupon, id) => {
+        e.stopPropagation()
+        navigator.clipboard.writeText(coupon)
+        setCopied(id)
+        setTimeout(() => setCopied(null), 1500)
+    }
 
     return (
         <motion.div
@@ -63,13 +74,13 @@ export default function CampaignSection() {
                             whileTap={{ scale: 0.98 }}
                             onClick={() => setActive(index)}
                             style={{
-                                minWidth: '300px',
+                                minWidth: '290px',
                                 borderRadius: theme.borderRadius.xl,
                                 overflow: 'hidden',
                                 cursor: 'pointer',
                                 flexShrink: 0,
                                 position: 'relative',
-                                height: '180px',
+                                height: '190px',
                             }}
                         >
                             <img
@@ -86,35 +97,40 @@ export default function CampaignSection() {
                                 style={{
                                     position: 'absolute',
                                     inset: 0,
-                                    background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%)',
+                                    background: 'linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.0) 55%)',
                                 }}
                             />
+
                             <div
                                 style={{
                                     position: 'absolute',
-                                    top: '12px',
-                                    left: '12px',
+                                    top: '10px',
+                                    left: '10px',
                                     backgroundColor: campaign.accent,
                                     color: '#fff',
-                                    fontSize: theme.fontSizes.xs,
-                                    fontWeight: '700',
-                                    padding: '4px 12px',
+                                    fontSize: '11px',
+                                    fontWeight: '800',
+                                    padding: '3px 10px',
                                     borderRadius: '999px',
                                 }}
                             >
                                 {campaign.label}
                             </div>
+
                             <div
                                 style={{
                                     position: 'absolute',
                                     bottom: '12px',
                                     left: '12px',
                                     right: '12px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '8px',
                                 }}
                             >
                                 <h3
                                     style={{
-                                        margin: '0 0 2px',
+                                        margin: 0,
                                         fontSize: theme.fontSizes.md,
                                         fontWeight: '700',
                                         color: '#fff',
@@ -127,53 +143,51 @@ export default function CampaignSection() {
                                 >
                                     {campaign.title}
                                 </h3>
+
                                 <div
                                     style={{
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'space-between',
-                                        marginTop: '6px',
                                     }}
                                 >
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                        <Calendar size={12} color="rgba(255,255,255,0.8)" />
-                                        <span
-                                            style={{
-                                                fontSize: theme.fontSizes.xs,
-                                                color: 'rgba(255,255,255,0.8)',
-                                                fontWeight: '500',
-                                            }}
-                                        >
-                                            {campaign.date}
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                        <Calendar size={11} color="rgba(255,255,255,0.7)" />
+                                        <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)', fontWeight: '500' }}>
+                                            Expires {campaign.date}
                                         </span>
                                     </div>
-                                    <div
+
+                                    <button
+                                        onClick={(e) => handleCopy(e, campaign.coupon, campaign.id)}
                                         style={{
                                             display: 'flex',
                                             alignItems: 'center',
-                                            gap: '3px',
-                                            backgroundColor: 'rgba(255,255,255,0.2)',
-                                            backdropFilter: 'blur(4px)',
-                                            padding: '5px 10px',
+                                            gap: '5px',
+                                            backgroundColor: campaign.accentLight,
+                                            border: 'none',
                                             borderRadius: '999px',
+                                            padding: '5px 10px',
+                                            cursor: 'pointer',
                                         }}
                                     >
-                                        <span
-                                            style={{
-                                                fontSize: theme.fontSizes.xs,
-                                                color: '#fff',
-                                                fontWeight: '600',
-                                            }}
-                                        >
-                                            Claim now
+                                        <Tag size={10} color={campaign.accent} />
+                                        <span style={{ fontSize: '11px', fontWeight: '800', color: campaign.accent }}>
+                                            {campaign.coupon}
                                         </span>
-                                        <ChevronRight size={12} color="#fff" />
-                                    </div>
+                                        <Copy size={10} color={campaign.accent} />
+                                        {copied === campaign.id && (
+                                            <span style={{ fontSize: '10px', fontWeight: '700', color: campaign.accent }}>
+                                                Copied!
+                                            </span>
+                                        )}
+                                    </button>
                                 </div>
                             </div>
                         </motion.div>
                     ))}
                 </div>
+
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '6px' }}>
                     {campaigns.map((_, index) => (
                         <motion.div

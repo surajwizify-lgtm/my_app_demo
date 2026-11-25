@@ -42,31 +42,31 @@ export default function MenuDrawer({ isOpen, onClose }) {
                             style={{ backgroundColor: theme.colors.surface }}
                         >
                             <div
-                                className="relative overflow-hidden px-6 pb-6 pt-12"
+                                className="relative overflow-hidden px-5 py-5"
                                 style={{ background: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.primaryDark})` }}
                             >
-                                <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white/10" />
+                                <div className="absolute -right-4 -top-4 h-20 w-20 rounded-full bg-white/10" />
 
                                 <button
                                     type="button"
                                     onClick={onClose}
-                                    className="absolute right-4 top-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white"
+                                    className="absolute right-4 top-4 flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-white"
                                 >
-                                    <X size={18} />
+                                    <X size={16} />
                                 </button>
 
-                                <div className="relative z-10 mt-4 flex items-center gap-4">
+                                <div className="relative z-10 flex items-center gap-3">
                                     <div
-                                        className="flex h-14 w-14 items-center justify-center rounded-full border-2 text-xl font-bold text-white"
+                                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border text-base font-bold text-white"
                                         style={{ borderColor: "rgba(255,255,255,0.4)", backgroundColor: "rgba(255,255,255,0.2)" }}
                                     >
                                         J
                                     </div>
                                     <div className="min-w-0 flex-1">
-                                        <h2 className="truncate text-lg font-bold text-white" style={{ fontFamily: theme.fonts.heading }}>
+                                        <h2 className="truncate text-sm font-bold text-white" style={{ fontFamily: theme.fonts.heading }}>
                                             Javed
                                         </h2>
-                                        <p className="truncate text-xs text-white/80">+91 98765 43210</p>
+                                        <p className="truncate text-[11px] text-white/70">javed@example.com</p>
                                     </div>
                                 </div>
                             </div>

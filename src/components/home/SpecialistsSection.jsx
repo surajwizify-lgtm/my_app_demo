@@ -12,7 +12,7 @@ const SPECIALTIES = [
         icon: Stethoscope,
         bg: '#e8f0fe',
         color: '#1a3fa8',
-        treatments: ['Braces', 'Root canal', 'Implants', 'Cleaning'],
+        treatments: ['Braces', 'Root canal', 'Implants',],
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const SPECIALTIES = [
         icon: Eye,
         bg: '#f3e8ff',
         color: '#7e22ce',
-        treatments: ['Cataract', 'Glaucoma', 'Lasik', 'Checkup'],
+        treatments: ['Cataract', 'Glaucoma', 'Lasik',],
     },
     {
         id: 3,
@@ -30,7 +30,7 @@ const SPECIALTIES = [
         icon: Sparkles,
         bg: '#ffe4e6',
         color: '#be123c',
-        treatments: ['Acne', 'Anti-aging', 'Hair loss', 'Laser'],
+        treatments: ['Acne', 'Anti-aging', 'Hair loss',],
     },
     {
         id: 4,
@@ -39,7 +39,7 @@ const SPECIALTIES = [
         icon: User,
         bg: '#ccfbf1',
         color: '#0f766e',
-        treatments: ['Pregnancy', 'PCOS', 'Infertility', 'Checkup'],
+        treatments: ['Pregnancy', 'PCOS', 'Infertility',],
     },
 ]
 
