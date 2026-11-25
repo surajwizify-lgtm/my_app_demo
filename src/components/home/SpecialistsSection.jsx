@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Stethoscope, Eye, Sparkles, User, ChevronDown, ChevronUp } from 'lucide-react'
 import theme from '@/styles/theme'
+import SectionHeader from '@/components/common/SectionHeader'
 
 const SPECIALTIES = [
     {
@@ -46,22 +47,15 @@ export default function SpecialistsSection() {
     const [expandedId, setExpandedId] = useState(1)
 
     return (
-        <div className="px-4 py-4">
-            <div className="mb-4 flex items-end justify-between">
-                <div>
-                    <h2 className="text-2xl font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
-                        Top Specialties
-                    </h2>
-                    <p className="mt-1 text-sm" style={{ color: theme.colors.textSecondary }}>
-                        Choose a specialty to see its doctors
-                    </p>
-                </div>
-                <button className="text-sm font-bold" style={{ color: theme.colors.primary }}>
-                    View all
-                </button>
-            </div>
+        <div className="py-4">
+            <SectionHeader
+                title="Top Specialties"
+                subtitle="Choose a specialty to see its doctors"
+                actionLabel="View all"
+                onAction={() => { }}
+            />
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 px-4">
                 {SPECIALTIES.map((specialty) => {
                     const isExpanded = expandedId === specialty.id
                     const Icon = specialty.icon

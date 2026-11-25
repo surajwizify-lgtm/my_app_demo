@@ -2,11 +2,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Smartphone, ArrowRight, ShieldCheck, ChevronLeft } from "lucide-react";
 import theme from "@/styles/theme";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
     const [step, setStep] = useState(1);
     const [phone, setPhone] = useState("");
     const [otp, setOtp] = useState("");
+    const navigate = useNavigate();
 
     const handleSendOtp = (e) => {
         e.preventDefault();
@@ -111,6 +113,7 @@ export default function LoginForm() {
                             <button
                                 type="submit"
                                 disabled={otp.length < 6}
+                                onSubmit={() => Navigate('/')}
                                 className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-sm font-bold text-white transition-transform active:scale-[0.98] disabled:opacity-50"
                                 style={{ backgroundColor: theme.colors.primary, boxShadow: `0 8px 24px ${theme.colors.primary}30` }}
                             >

@@ -1,51 +1,31 @@
-import theme from '../../styles/theme'
+import theme from "@/styles/theme";
 
 export default function SectionHeader({ title, subtitle, actionLabel, onAction }) {
     return (
-        <div
-            style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginBottom: theme.spacing.md,
-            }}
-        >
+        <div className="mb-4 flex items-end justify-between px-4">
             <div>
                 <h2
-                    style={{
-                        fontSize: theme.fontSizes.lg,
-                        fontWeight: '700',
-                        color: theme.colors.textPrimary,
-                        margin: 0,
-                    }}
+                    className="text-[22px] font-bold leading-tight"
+                    style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}
                 >
                     {title}
                 </h2>
                 {subtitle && (
-                    <p
-                        style={{
-                            fontSize: theme.fontSizes.sm,
-                            color: theme.colors.textSecondary,
-                            margin: '2px 0 0 0',
-                        }}
-                    >
+                    <p className="mt-1 text-[13px] font-medium" style={{ color: theme.colors.textSecondary }}>
                         {subtitle}
                     </p>
                 )}
             </div>
-            {actionLabel && (
-                <span
+            {actionLabel && onAction && (
+                <button
+                    type="button"
                     onClick={onAction}
-                    style={{
-                        fontSize: theme.fontSizes.sm,
-                        fontWeight: '600',
-                        color: theme.colors.primary,
-                        cursor: 'pointer',
-                    }}
+                    className="shrink-0 pb-1 text-[13px] font-bold transition-transform active:scale-95"
+                    style={{ color: theme.colors.primary }}
                 >
                     {actionLabel}
-                </span>
+                </button>
             )}
         </div>
-    )
+    );
 }

@@ -23,7 +23,7 @@ export default function BottomNav() {
                     position: 'fixed',
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    bottom: 'calc(env(safe-area-inset-bottom, 0px) + 14px)',
+                    bottom: 'calc(env(safe-area-inset-bottom, 0px) + 5px)',
                     width: 'calc(100% - 28px)',
                     maxWidth: '460px',
                     height: '70px',
