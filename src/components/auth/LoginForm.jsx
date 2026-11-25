@@ -8,16 +8,16 @@ export default function LoginForm() {
     const [step, setStep] = useState(1);
     const [phone, setPhone] = useState("");
     const [otp, setOtp] = useState("");
-    const navigate = useNavigate();
 
     const handleSendOtp = (e) => {
         e.preventDefault();
         if (phone.length >= 10) setStep(2);
     };
-
+    const navigate = useNavigate()
     const handleVerify = (e) => {
         e.preventDefault();
         if (otp.length >= 6) {
+            navigate('/')
             console.log("Verify OTP for", phone);
         }
     };
@@ -113,7 +113,6 @@ export default function LoginForm() {
                             <button
                                 type="submit"
                                 disabled={otp.length < 6}
-                                onSubmit={() => Navigate('/')}
                                 className="mt-2 flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-sm font-bold text-white transition-transform active:scale-[0.98] disabled:opacity-50"
                                 style={{ backgroundColor: theme.colors.primary, boxShadow: `0 8px 24px ${theme.colors.primary}30` }}
                             >
