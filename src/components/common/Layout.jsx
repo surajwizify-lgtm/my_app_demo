@@ -25,6 +25,7 @@ export default function Layout() {
                 maxWidth: '480px',
                 width: '100%',
                 margin: '0 auto',
+                paddingBottom: '80px',
                 backgroundColor: theme.colors.background,
                 minHeight: '100vh',
                 position: 'relative',
