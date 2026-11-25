@@ -44,7 +44,7 @@ export default function HospitalDetailPage() {
     const ActiveTab = TAB_COMPONENTS[activeTab];
 
     return (
-        <div style={{ maxWidth: "390px", margin: "0 auto", position: "relative", minHeight: "100vh", backgroundColor: theme.colors.background }}>
+        <div style={{ margin: "0 auto", position: "relative", minHeight: "100vh", backgroundColor: theme.colors.background }}>
             <HospitalHeroSection hospital={hospital} />
             <HospitalTabsSection activeTab={activeTab} onChange={setActiveTab} />
             <div className="pb-8">

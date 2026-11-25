@@ -23,11 +23,11 @@ export default function HomePage() {
                 }}
             >
                 {/* <SearchSection /> */}
-                <HealthArticlesSection />
                 <EmergencySection />
                 <DepartmentsSection />
                 <CampaignSection />
                 <SpecialistsSection />
+                <HealthArticlesSection />
                 <ArticlesCategorySection />
 
             </div>

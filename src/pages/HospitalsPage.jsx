@@ -6,7 +6,7 @@ import HospitalListSection from "@/components/hospital/HospitalListSection";
 
 export default function HospitalsPage() {
     return (
-        <div style={{ maxWidth: "390px", margin: "0 auto", position: "relative", minHeight: "100vh" }}>
+        <div style={{ margin: "0 auto", position: "relative", minHeight: "100vh" }}>
             <HospitalSearchSection />
             <HospitalFiltersSection />
             <FeaturedHospitalsSection />

@@ -4,9 +4,13 @@ import theme from '@/styles/theme'
 
 const PAGE_ORDER = [
     '/',
+    "/login",
+    '/orders',
+    '/profile',
     '/hospitals',
     '/hospitals/1',
-    '/profile',
+    '/cart',
+    '/tests',
 ]
 
 export default function NextPageButton() {

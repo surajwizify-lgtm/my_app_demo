@@ -1,0 +1,47 @@
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import OrderCard from "@/components/orders/OrderCard";
+import theme from "@/styles/theme";
+
+const ORDERS = [
+    { id: 1, date: "2026-11-16", orderNo: "42PBDC6QSL", labName: "Healthquest Diagnostic", amount: "₹300", status: "Open", bookingType: "Pathology Test" },
+    { id: 2, date: "2026-08-06", orderNo: "XV1PR5HWCO", labName: "Health Quest Labs", amount: "₹22499.25", status: "Open", bookingType: "Full Body Checkup" },
+    { id: 3, date: "2026-07-23", orderNo: "X1DUTNYHHF", labName: "The Health County Labs", amount: "₹87.50", status: "Open", bookingType: "Blood Test" },
+    { id: 4, date: "2026-07-13", orderNo: "PUM2GTK603", labName: "Pratham Ultrasound and Diagnostics centre", amount: "₹605", status: "Open", bookingType: "Ultrasound" },
+];
+
+export default function OrdersPage() {
+    const navigate = useNavigate();
+
+    return (
+        <div style={{ backgroundColor: theme.colors.background, minHeight: "100vh" }}>
+            <div
+                className="sticky top-0 z-30 flex items-center gap-3 px-4 py-4"
+                style={{ backgroundColor: theme.colors.surface, borderBottom: `1px solid ${theme.colors.border}` }}
+            >
+                <button
+                    type="button"
+                    onClick={() => navigate(-1)}
+                    className="flex h-9 w-9 items-center justify-center rounded-full"
+                    style={{ backgroundColor: theme.colors.background }}
+                >
+                    <ArrowLeft size={18} color={theme.colors.textPrimary} />
+                </button>
+                <div className="flex flex-col">
+                    <h1 className="text-base font-bold leading-tight" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
+                        My Tests
+                    </h1>
+                    <p className="text-[11px]" style={{ color: theme.colors.textMuted }}>
+                        {ORDERS.length} orders found
+                    </p>
+                </div>
+            </div>
+
+            <div className="flex flex-col gap-3 px-4 py-4 pb-8">
+                {ORDERS.map((order) => (
+                    <OrderCard key={order.id} order={order} />
+                ))}
+            </div>
+        </div>
+    );
+}

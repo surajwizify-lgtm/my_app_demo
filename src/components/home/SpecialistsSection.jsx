@@ -1,158 +1,146 @@
-import { Star } from 'lucide-react'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Stethoscope, Eye, Sparkles, User, ChevronDown, ChevronUp } from 'lucide-react'
 import theme from '@/styles/theme'
-import SectionHeader from '@/components/common/SectionHeader'
 
-const specialists = [
+const SPECIALTIES = [
     {
         id: 1,
-        name: 'Dr. Anita Sharma',
-        specialty: 'Cardiologist',
-        rating: 4.9,
-        experience: '12 yrs',
-        initial: 'A',
-        bg: '#d6ebfb',
-        gradient: `linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.secondary})`,
+        name: 'Dental',
+        subtitle: 'Teeth & gum care',
+        icon: Stethoscope,
+        bg: '#e8f0fe',
+        color: '#1a3fa8',
+        treatments: ['Braces', 'Root canal', 'Implants', 'Cleaning'],
     },
     {
         id: 2,
-        name: 'Dr. Rahul Verma',
-        specialty: 'Neurologist',
-        rating: 4.8,
-        experience: '9 yrs',
-        initial: 'R',
-        bg: '#e6dffb',
-        gradient: 'linear-gradient(135deg, #5b45d1, #8a6cf0)',
+        name: 'Eyes',
+        subtitle: 'Vision & eye care',
+        icon: Eye,
+        bg: '#f3e8ff',
+        color: '#7e22ce',
+        treatments: ['Cataract', 'Glaucoma', 'Lasik', 'Checkup'],
     },
     {
         id: 3,
-        name: 'Dr. Sana Khan',
-        specialty: 'Gynecologist',
-        rating: 4.9,
-        experience: '15 yrs',
-        initial: 'S',
-        bg: '#d3f3ec',
-        gradient: 'linear-gradient(135deg, #0b8a7e, #27c1ae)',
+        name: 'Skin & Cosmetic',
+        subtitle: 'Skin, hair & beauty',
+        icon: Sparkles,
+        bg: '#ffe4e6',
+        color: '#be123c',
+        treatments: ['Acne', 'Anti-aging', 'Hair loss', 'Laser'],
+    },
+    {
+        id: 4,
+        name: 'Gynecology',
+        subtitle: "Women's health",
+        icon: User,
+        bg: '#ccfbf1',
+        color: '#0f766e',
+        treatments: ['Pregnancy', 'PCOS', 'Infertility', 'Checkup'],
     },
 ]
 
 export default function SpecialistsSection() {
+    const [expandedId, setExpandedId] = useState(1)
+
     return (
-        <div>
-            <SectionHeader title="Top Specialists" subtitle="Sample doctors, replace with live data" actionLabel="View all" onAction={() => { }} />
-            <div
-                style={{
-                    display: 'flex',
-                    gap: theme.spacing.md,
-                    overflowX: 'auto',
-                    scrollbarWidth: 'none',
-                    paddingBottom: '4px',
-                }}
-            >
-                {specialists.map((doctor) => (
-                    <div
-                        key={doctor.id}
-                        style={{
-                            minWidth: '160px',
-                            borderRadius: theme.borderRadius.xl,
-                            backgroundColor: doctor.bg,
-                            padding: theme.spacing.md,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '8px',
-                            flexShrink: 0,
-                        }}
-                    >
-                        <div style={{ position: 'relative', width: 'fit-content' }}>
-                            <div
-                                style={{
-                                    width: '52px',
-                                    height: '52px',
-                                    borderRadius: '50%',
-                                    background: doctor.gradient,
-                                    color: theme.colors.white,
-                                    display: 'grid',
-                                    placeItems: 'center',
-                                    fontWeight: '800',
-                                    fontSize: '20px',
-                                }}
-                            >
-                                {doctor.initial}
-                            </div>
-                            <span
-                                style={{
-                                    position: 'absolute',
-                                    bottom: '2px',
-                                    right: '0px',
-                                    width: '10px',
-                                    height: '10px',
-                                    borderRadius: '50%',
-                                    backgroundColor: theme.colors.success,
-                                    border: `2px solid ${theme.colors.white}`,
-                                }}
-                            />
-                        </div>
-                        <div>
-                            <p
-                                style={{
-                                    margin: 0,
-                                    fontSize: theme.fontSizes.sm,
-                                    fontWeight: '700',
-                                    color: theme.colors.textPrimary,
-                                    lineHeight: '1.3',
-                                }}
-                            >
-                                {doctor.name}
-                            </p>
-                            <p
-                                style={{
-                                    margin: '2px 0 0 0',
-                                    fontSize: theme.fontSizes.xs,
-                                    color: theme.colors.textSecondary,
-                                    fontWeight: '500',
-                                }}
-                            >
-                                {doctor.specialty}
-                            </p>
-                        </div>
+        <div className="px-4 py-4">
+            <div className="mb-4 flex items-end justify-between">
+                <div>
+                    <h2 className="text-2xl font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
+                        Top Specialties
+                    </h2>
+                    <p className="mt-1 text-sm" style={{ color: theme.colors.textSecondary }}>
+                        Choose a specialty to see its doctors
+                    </p>
+                </div>
+                <button className="text-sm font-bold" style={{ color: theme.colors.primary }}>
+                    View all
+                </button>
+            </div>
+
+            <div className="flex flex-col gap-3">
+                {SPECIALTIES.map((specialty) => {
+                    const isExpanded = expandedId === specialty.id
+                    const Icon = specialty.icon
+
+                    return (
                         <div
+                            key={specialty.id}
+                            className="overflow-hidden rounded-2xl transition-all"
                             style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '4px',
-                                backgroundColor: theme.colors.white,
-                                padding: '4px 8px',
-                                borderRadius: theme.borderRadius.full,
-                                width: 'fit-content',
+                                backgroundColor: theme.colors.surface,
+                                border: `1px solid ${isExpanded ? theme.colors.border : theme.colors.border}`,
+                                boxShadow: isExpanded ? theme.shadows.soft : 'none',
                             }}
                         >
-                            <Star size={12} color={theme.colors.accent} fill={theme.colors.accent} />
-                            <span
-                                style={{
-                                    fontSize: theme.fontSizes.xs,
-                                    fontWeight: '700',
-                                    color: theme.colors.textPrimary,
-                                }}
+                            <button
+                                type="button"
+                                onClick={() => setExpandedId(isExpanded ? null : specialty.id)}
+                                className="flex w-full items-center gap-4 p-4 text-left"
                             >
-                                {doctor.rating} · {doctor.experience}
-                            </span>
+                                <div
+                                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl"
+                                    style={{ backgroundColor: specialty.bg, color: specialty.color }}
+                                >
+                                    <Icon size={24} />
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="text-base font-bold" style={{ color: theme.colors.textPrimary }}>
+                                        {specialty.name}
+                                    </h3>
+                                    <p className="text-xs" style={{ color: theme.colors.textSecondary }}>
+                                        {specialty.subtitle}
+                                    </p>
+                                </div>
+                                <div
+                                    className="flex h-8 w-8 items-center justify-center rounded-full"
+                                    style={{ backgroundColor: isExpanded ? theme.colors.primaryLight : theme.colors.background }}
+                                >
+                                    {isExpanded ? (
+                                        <ChevronUp size={16} color={theme.colors.primary} />
+                                    ) : (
+                                        <ChevronDown size={16} color={theme.colors.textSecondary} />
+                                    )}
+                                </div>
+                            </button>
+
+                            <AnimatePresence>
+                                {isExpanded && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: 'auto', opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <div className="px-4 pb-4">
+                                            <div className="mb-4 flex flex-wrap gap-2">
+                                                {specialty.treatments.map((treatment) => (
+                                                    <span
+                                                        key={treatment}
+                                                        className="rounded-full px-3 py-1.5 text-xs font-bold"
+                                                        style={{ backgroundColor: theme.colors.background, color: theme.colors.textPrimary }}
+                                                    >
+                                                        {treatment}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                            <button
+                                                type="button"
+                                                className="w-full rounded-full py-3 text-sm font-bold text-white transition-transform active:scale-[0.98]"
+                                                style={{ backgroundColor: theme.colors.primary }}
+                                            >
+                                                View all
+                                            </button>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
-                        <div
-                            onClick={() => { }}
-                            style={{
-                                backgroundColor: theme.colors.primary,
-                                color: theme.colors.white,
-                                fontSize: theme.fontSizes.xs,
-                                fontWeight: '700',
-                                padding: '8px 12px',
-                                borderRadius: theme.borderRadius.full,
-                                textAlign: 'center',
-                                cursor: 'pointer',
-                            }}
-                        >
-                            Book now
-                        </div>
-                    </div>
-                ))}
+                    )
+                })}
             </div>
         </div>
     )
