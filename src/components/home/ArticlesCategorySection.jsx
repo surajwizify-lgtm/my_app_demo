@@ -1,89 +1,116 @@
 import { motion } from 'framer-motion'
 import theme from '@/styles/theme'
 import SectionHeader from '@/components/common/SectionHeader'
-import { Heart, Brain, Bone, Eye, Baby, Stethoscope, Pill, Microscope } from 'lucide-react'
 
 const categories = [
-    { label: 'Cardiology', icon: Heart, color: theme.colors.danger, bg: theme.colors.dangerLight, count: 24 },
-    { label: 'Neurology', icon: Brain, color: '#8B5CF6', bg: '#F5F3FF', count: 18 },
-    { label: 'Orthopedic', icon: Bone, color: '#F59E0B', bg: '#FFFBEB', count: 15 },
-    { label: 'Ophthalmology', icon: Eye, color: '#06B6D4', bg: '#ECFEFF', count: 12 },
-    { label: 'Pediatrics', icon: Baby, color: '#EC4899', bg: '#FDF2F8', count: 20 },
-    { label: 'General', icon: Stethoscope, color: theme.colors.primary, bg: theme.colors.primaryLight, count: 32 },
-    { label: 'Pharmacy', icon: Pill, color: theme.colors.secondary, bg: theme.colors.secondaryLight, count: 10 },
-    { label: 'Pathology', icon: Microscope, color: '#F97316', bg: '#FFF7ED', count: 8 },
+    {
+        id: 1,
+        title: 'Preventive health',
+        subtitle: 'Stay ahead of illness',
+        bg: '#FDECEA',
+        image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200&q=80',
+    },
+    {
+        id: 2,
+        title: 'Cancer & surgery',
+        subtitle: 'Care and recovery',
+        bg: '#FEF3E2',
+        image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200&q=80',
+    },
+    {
+        id: 3,
+        title: 'Women health',
+        subtitle: 'Every stage of life',
+        bg: '#E8F0FE',
+        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&q=80',
+    },
+    {
+        id: 4,
+        title: 'Mind & neurology',
+        subtitle: 'Brain and nerve health',
+        bg: '#EAFAF1',
+        image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=200&q=80',
+    },
+    {
+        id: 5,
+        title: 'Lungs & breathing',
+        subtitle: 'Respiratory wellness',
+        bg: '#EDE7F6',
+        image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=200&q=80',
+    },
+    {
+        id: 6,
+        title: 'Heart care',
+        subtitle: 'Cardio and beyond',
+        bg: '#E3F2FD',
+        image: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=200&q=80',
+    },
 ]
 
 export default function ArticlesCategorySection() {
     return (
         <div>
-            <SectionHeader title="Browse by Category" actionLabel="See All" onAction={() => { }} />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.sm }}>
-                {categories.map(({ label, icon: Icon, color, bg, count }, index) => (
+            <SectionHeader
+                title="Article categories"
+                actionLabel="View all"
+                onAction={() => { }}
+            />
+            <div
+                style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: theme.spacing.sm,
+                }}
+            >
+                {categories.map((cat, index) => (
                     <motion.div
-                        key={label}
+                        key={cat.id}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.07, duration: 0.3, ease: 'easeOut' }}
-                        whileTap={{ scale: 0.98 }}
+                        whileTap={{ scale: 0.97 }}
                         onClick={() => { }}
                         style={{
-                            backgroundColor: theme.colors.white,
+                            backgroundColor: cat.bg,
                             borderRadius: theme.borderRadius.lg,
-                            padding: `${theme.spacing.sm} ${theme.spacing.md}`,
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: theme.spacing.md,
-                            boxShadow: '0px 2px 12px rgba(0,0,0,0.06)',
+                            padding: theme.spacing.sm,
                             cursor: 'pointer',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: theme.spacing.sm,
                         }}
                     >
-                        <div
+                        <img
+                            src={cat.image}
+                            alt={cat.title}
                             style={{
-                                width: '44px',
-                                height: '44px',
+                                width: '72px',
+                                height: '72px',
+                                objectFit: 'cover',
                                 borderRadius: theme.borderRadius.md,
-                                backgroundColor: bg,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                flexShrink: 0,
                             }}
-                        >
-                            <Icon size={20} color={color} />
-                        </div>
-                        <div style={{ flex: 1 }}>
+                        />
+                        <div>
                             <h4
                                 style={{
                                     margin: 0,
-                                    fontSize: theme.fontSizes.md,
+                                    fontSize: theme.fontSizes.sm,
                                     fontWeight: '700',
                                     color: theme.colors.textPrimary,
+                                    lineHeight: '1.3',
                                 }}
                             >
-                                {label}
+                                {cat.title}
                             </h4>
                             <p
                                 style={{
-                                    margin: 0,
+                                    margin: '2px 0 0',
                                     fontSize: theme.fontSizes.xs,
                                     color: theme.colors.textSecondary,
                                 }}
                             >
-                                {count} articles
+                                {cat.subtitle}
                             </p>
-                        </div>
-                        <div
-                            style={{
-                                backgroundColor: bg,
-                                color: color,
-                                fontSize: theme.fontSizes.xs,
-                                fontWeight: '700',
-                                padding: '4px 10px',
-                                borderRadius: theme.borderRadius.full,
-                            }}
-                        >
-                            {count}
                         </div>
                     </motion.div>
                 ))}

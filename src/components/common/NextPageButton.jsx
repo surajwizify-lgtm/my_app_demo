@@ -5,7 +5,7 @@ import theme from '@/styles/theme'
 const PAGE_ORDER = [
     '/',
     '/hospitals',
-    '/campaign',
+    '/hospitals/1',
     '/profile',
 ]
 

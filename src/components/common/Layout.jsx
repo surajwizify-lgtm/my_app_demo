@@ -17,12 +17,12 @@ export default function Layout() {
                 position: 'relative',
             }}
         >
-            <div style={{ paddingBottom: '0px' }}>
+            <div style={{ paddingBottom: '50px' }}>
                 <AnimatePresence mode="wait">
                     <Outlet key={location.pathname} />
                 </AnimatePresence>
             </div>
-            {/* <BottomNav /> */}
+            <BottomNav />
             <NextPageButton />  {/* ← add this */}
         </div>
     )

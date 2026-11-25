@@ -1,20 +1,36 @@
+import theme from '@/styles/theme'
+import Navbar from '@/components/common/Navbar'
+import PageTransition from '@/components/common/PageTransition'
+import SearchSection from '@/components/home/SearchSection'
+import EmergencySection from '@/components/home/EmergencySection'
+import DepartmentsSection from '@/components/home/DepartmentsSection'
+import CampaignSection from '@/components/home/CampaignSection'
+import SpecialistsSection from '@/components/home/SpecialistsSection'
+import HealthArticlesSection from '@/components/home/HealthArticlesSection'
+import ArticlesCategorySection from '@/components/home/ArticlesCategorySection'
 import BottomNav from '@/components/common/BottomNav'
 
 export default function HomePage() {
     return (
-        <div style={{ maxWidth: '390px', margin: '0 auto', position: 'relative', minHeight: '100vh' }}>
-            <iframe
-                src="/health_home.html"
+        <PageTransition>
+            <Navbar userName="John Doe" location="New York, US" />
+            <div
                 style={{
-                    width: '100%',
-                    height: '100vh',
-                    border: 'none',
-                    display: 'block',
-                    paddingBottom: '0px',
+                    padding: `${theme.spacing.md} ${theme.spacing.md}`,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: theme.spacing.lg,
                 }}
-                title="Health App Home"
-            />
-            {/* <BottomNav /> */}
-        </div>
+            >
+                {/* <SearchSection /> */}
+                <HealthArticlesSection />
+                <EmergencySection />
+                <DepartmentsSection />
+                <CampaignSection />
+                <SpecialistsSection />
+                <ArticlesCategorySection />
+
+            </div>
+        </PageTransition>
     )
 }

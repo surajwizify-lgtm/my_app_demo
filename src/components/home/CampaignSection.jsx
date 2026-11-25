@@ -2,36 +2,35 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import theme from '@/styles/theme'
 import SectionHeader from '@/components/common/SectionHeader'
-import Badge from '@/components/common/Badge'
 import { Calendar, ChevronRight } from 'lucide-react'
 
 const campaigns = [
     {
         id: 1,
         title: 'Free Blood Pressure Checkup',
-        description: 'Get your blood pressure checked for free at participating hospitals.',
+        subtitle: 'Limited slots available',
         date: 'Dec 15, 2024',
-        variant: 'danger',
         label: 'Free',
-        gradient: `linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)`,
+        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
+        accent: '#1A56DB',
     },
     {
         id: 2,
         title: '50% Off Dental Checkup',
-        description: 'Special discount on dental checkups at all partnered clinics.',
+        subtitle: 'All partnered clinics',
         date: 'Dec 20, 2024',
-        variant: 'secondary',
         label: '50% Off',
-        gradient: `linear-gradient(135deg, #10B981 0%, #059669 100%)`,
+        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80',
+        accent: '#059669',
     },
     {
         id: 3,
         title: 'Free Eye Screening Camp',
-        description: 'Annual eye screening camp with free consultation.',
+        subtitle: 'Walk-in welcome',
         date: 'Dec 25, 2024',
-        variant: 'accent',
         label: 'Free',
-        gradient: `linear-gradient(135deg, #F59E0B 0%, #D97706 100%)`,
+        image: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=600&q=80',
+        accent: '#D97706',
     },
 ]
 
@@ -42,9 +41,9 @@ export default function CampaignSection() {
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
         >
-            <SectionHeader title="Campaigns" actionLabel="See All" onAction={() => { }} />
+            <SectionHeader title="Campaigns" actionLabel="View all" onAction={() => { }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: theme.spacing.sm }}>
                 <div
                     style={{
@@ -64,72 +63,112 @@ export default function CampaignSection() {
                             whileTap={{ scale: 0.98 }}
                             onClick={() => setActive(index)}
                             style={{
-                                minWidth: '280px',
-                                background: campaign.gradient,
+                                minWidth: '300px',
                                 borderRadius: theme.borderRadius.xl,
-                                padding: theme.spacing.lg,
+                                overflow: 'hidden',
                                 cursor: 'pointer',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                gap: theme.spacing.sm,
+                                flexShrink: 0,
+                                position: 'relative',
+                                height: '180px',
                             }}
                         >
-                            <Badge label={campaign.label} variant="primary" size="sm" />
-                            <h3
+                            <img
+                                src={campaign.image}
+                                alt={campaign.title}
                                 style={{
-                                    margin: 0,
-                                    fontSize: theme.fontSizes.lg,
-                                    fontWeight: '700',
-                                    color: theme.colors.white,
-                                    lineHeight: '1.3',
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    display: 'block',
                                 }}
-                            >
-                                {campaign.title}
-                            </h3>
-                            <p
-                                style={{
-                                    margin: 0,
-                                    fontSize: theme.fontSizes.sm,
-                                    color: 'rgba(255,255,255,0.8)',
-                                    lineHeight: '1.5',
-                                }}
-                            >
-                                {campaign.description}
-                            </p>
+                            />
                             <div
                                 style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'space-between',
-                                    marginTop: theme.spacing.xs,
+                                    position: 'absolute',
+                                    inset: 0,
+                                    background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%)',
+                                }}
+                            />
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    top: '12px',
+                                    left: '12px',
+                                    backgroundColor: campaign.accent,
+                                    color: '#fff',
+                                    fontSize: theme.fontSizes.xs,
+                                    fontWeight: '700',
+                                    padding: '4px 12px',
+                                    borderRadius: '999px',
                                 }}
                             >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                    <Calendar size={14} color="rgba(255,255,255,0.8)" />
-                                    <span
-                                        style={{
-                                            fontSize: theme.fontSizes.xs,
-                                            color: 'rgba(255,255,255,0.8)',
-                                            fontWeight: '500',
-                                        }}
-                                    >
-                                        {campaign.date}
-                                    </span>
-                                </div>
+                                {campaign.label}
+                            </div>
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    bottom: '12px',
+                                    left: '12px',
+                                    right: '12px',
+                                }}
+                            >
+                                <h3
+                                    style={{
+                                        margin: '0 0 2px',
+                                        fontSize: theme.fontSizes.md,
+                                        fontWeight: '700',
+                                        color: '#fff',
+                                        lineHeight: '1.3',
+                                        display: '-webkit-box',
+                                        WebkitLineClamp: 2,
+                                        WebkitBoxOrient: 'vertical',
+                                        overflow: 'hidden',
+                                    }}
+                                >
+                                    {campaign.title}
+                                </h3>
                                 <div
                                     style={{
                                         display: 'flex',
                                         alignItems: 'center',
-                                        gap: '4px',
-                                        backgroundColor: 'rgba(255,255,255,0.2)',
-                                        padding: '6px 12px',
-                                        borderRadius: theme.borderRadius.full,
+                                        justifyContent: 'space-between',
+                                        marginTop: '6px',
                                     }}
                                 >
-                                    <span style={{ fontSize: theme.fontSizes.xs, color: theme.colors.white, fontWeight: '600' }}>
-                                        Join Now
-                                    </span>
-                                    <ChevronRight size={14} color={theme.colors.white} />
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                        <Calendar size={12} color="rgba(255,255,255,0.8)" />
+                                        <span
+                                            style={{
+                                                fontSize: theme.fontSizes.xs,
+                                                color: 'rgba(255,255,255,0.8)',
+                                                fontWeight: '500',
+                                            }}
+                                        >
+                                            {campaign.date}
+                                        </span>
+                                    </div>
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '3px',
+                                            backgroundColor: 'rgba(255,255,255,0.2)',
+                                            backdropFilter: 'blur(4px)',
+                                            padding: '5px 10px',
+                                            borderRadius: '999px',
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                fontSize: theme.fontSizes.xs,
+                                                color: '#fff',
+                                                fontWeight: '600',
+                                            }}
+                                        >
+                                            Claim now
+                                        </span>
+                                        <ChevronRight size={12} color="#fff" />
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -144,10 +183,7 @@ export default function CampaignSection() {
                                 backgroundColor: active === index ? theme.colors.primary : theme.colors.border,
                             }}
                             transition={{ duration: 0.3 }}
-                            style={{
-                                height: '6px',
-                                borderRadius: theme.borderRadius.full,
-                            }}
+                            style={{ height: '6px', borderRadius: '999px' }}
                         />
                     ))}
                 </div>
