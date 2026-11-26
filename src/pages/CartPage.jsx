@@ -61,7 +61,7 @@ export default function CartPage() {
                         discount={discount}
                         tax={tax}
                         total={total}
-                        appliedCoupon="ABC"
+                        appliedCoupon={{ code: 'COUPON001' }}
                     />
 
                     <CartCheckoutBar total={total} />

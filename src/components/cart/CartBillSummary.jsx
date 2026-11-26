@@ -3,16 +3,19 @@ import theme from "@/styles/theme";
 
 export default function CartBillSummary({
     subtotal,
-    discount,
+    testDiscount = 50,
+    couponDiscount = 100,
     tax,
     total,
     appliedCoupon,
     onOpenCoupons,
     onRemoveCoupon
 }) {
+    const totalDiscount = testDiscount + couponDiscount;
+
     return (
         <div
-            className="rounded-2xl p-4"
+            className="rounded-2xl p-5"
             style={{
                 backgroundColor: theme.colors.surface,
                 border: `1px solid ${theme.colors.border}`,
@@ -27,7 +30,7 @@ export default function CartBillSummary({
                     </h2>
                 </div>
 
-                {!appliedCoupon && (
+                {(
                     <button
                         type="button"
                         onClick={onOpenCoupons}
@@ -57,18 +60,23 @@ export default function CartBillSummary({
                                 {appliedCoupon.code} Applied
                             </span>
                             <span className="text-[10px] font-medium" style={{ color: theme.colors.textSecondary }}>
-                                You saved ₹{discount.toLocaleString("en-IN")}
+                                You saved ₹{couponDiscount.toLocaleString("en-IN")}
                             </span>
                         </div>
                     </div>
-                    <button
-                        type="button"
-                        onClick={onRemoveCoupon}
-                        className="text-[11px] font-bold underline"
-                        style={{ color: theme.colors.danger }}
-                    >
-                        Remove
-                    </button>
+                    <div>
+                        <div className="text-sm font-bold mb-0.5" style={{ color: theme.colors.success }}>
+                            20% off
+                        </div>
+                        <button
+                            type="button"
+                            onClick={onRemoveCoupon}
+                            className="text-[10px] font-bold underline"
+                            style={{ color: theme.colors.danger }}
+                        >
+                            Remove
+                        </button>
+                    </div>
                 </div>
             )}
 
@@ -82,13 +90,35 @@ export default function CartBillSummary({
                     </span>
                 </div>
 
-                {discount > 0 && (
+                {testDiscount > 0 && (
                     <div className="flex items-center justify-between">
                         <span className="text-[12px]" style={{ color: theme.colors.textSecondary }}>
-                            Discount
+                            Test Discount
                         </span>
                         <span className="text-[12px] font-semibold" style={{ color: theme.colors.success }}>
-                            - ₹{discount.toLocaleString("en-IN")}
+                            - ₹{testDiscount.toLocaleString("en-IN")}
+                        </span>
+                    </div>
+                )}
+
+                {couponDiscount > 0 && (
+                    <div className="flex items-center justify-between">
+                        <span className="text-[12px]" style={{ color: theme.colors.textSecondary }}>
+                            Coupon Discount
+                        </span>
+                        <span className="text-[12px] font-semibold" style={{ color: theme.colors.success }}>
+                            - ₹{couponDiscount.toLocaleString("en-IN")}
+                        </span>
+                    </div>
+                )}
+
+                {totalDiscount > 0 && (
+                    <div className="flex items-center justify-between">
+                        <span className="text-[12px] font-bold" style={{ color: theme.colors.textPrimary }}>
+                            Total Discount
+                        </span>
+                        <span className="text-[12px] font-bold" style={{ color: theme.colors.success }}>
+                            - ₹{totalDiscount.toLocaleString("en-IN")}
                         </span>
                     </div>
                 )}
