@@ -14,9 +14,16 @@ export default function OrdersPage() {
     const navigate = useNavigate();
 
     return (
-        <div style={{ backgroundColor: theme.colors.background, minHeight: "100vh" }}>
+        <div
+            className="flex flex-col w-full"
+            style={{
+                backgroundColor: theme.colors.background,
+                height: '100vh',
+                overflow: 'hidden'
+            }}
+        >
             <div
-                className="sticky top-0 z-30 flex items-center rounded-bl-3xl rounded-br-3xl gap-3 px-4 py-4"
+                className="shrink-0 relative overflow-hidden flex items-center rounded-bl-3xl rounded-br-3xl gap-3 px-4 py-4"
                 style={{ backgroundColor: theme.colors.primary, borderBottom: `1px solid ${theme.colors.border}` }}
             >
                 <div
@@ -30,12 +37,12 @@ export default function OrdersPage() {
                 <button
                     type="button"
                     onClick={() => navigate(-1)}
-                    className="flex h-9 w-9 items-center justify-center rounded-full"
+                    className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full"
                     style={{ backgroundColor: theme.colors.background }}
                 >
                     <ArrowLeft size={18} color={theme.colors.textPrimary} />
                 </button>
-                <div className="flex flex-col">
+                <div className="relative z-10 flex flex-col">
                     <h1 className="text-base font-bold leading-tight" style={{ color: theme.colors.white, fontFamily: theme.fonts.heading }}>
                         My Tests
                     </h1>
@@ -45,10 +52,12 @@ export default function OrdersPage() {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-3 px-4 py-4 pb-8">
-                {ORDERS.map((order) => (
-                    <OrderCard key={order.id} order={order} />
-                ))}
+            <div className="flex-1 w-full overflow-y-auto overflow-x-hidden">
+                <div className="flex flex-col gap-3 px-4 py-4 pb-28">
+                    {ORDERS.map((order) => (
+                        <OrderCard key={order.id} order={order} />
+                    ))}
+                </div>
             </div>
         </div>
     );

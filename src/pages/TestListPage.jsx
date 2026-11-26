@@ -17,15 +17,26 @@ const TESTS = [
 
 export default function TestListPage() {
     return (
-        <div style={{ backgroundColor: theme.colors.background, minHeight: "100vh" }}>
-            <TestHeader />
-            <TestSearchSection />
-            <TestFiltersSection />
+        <div
+            className="flex flex-col w-full"
+            style={{
+                backgroundColor: theme.colors.background,
+                height: '100vh',
+                overflow: 'hidden'
+            }}
+        >
+            <div className="shrink-0 w-full">
+                <TestHeader />
+                <TestSearchSection />
+                <TestFiltersSection />
+            </div>
 
-            <div className="flex flex-col gap-3 px-4 pb-8 pt-1">
-                {TESTS.map((test) => (
-                    <TestItemCard key={test.id} test={test} />
-                ))}
+            <div className="flex-1 w-full overflow-y-auto overflow-x-hidden">
+                <div className="flex flex-col gap-3 px-4 pb-8 pt-1">
+                    {TESTS.map((test) => (
+                        <TestItemCard key={test.id} test={test} />
+                    ))}
+                </div>
             </div>
         </div>
     );

@@ -59,7 +59,7 @@ export default function HospitalTabsSection({ activeTab, onChange }) {
                     style={{ backgroundColor: theme.colors.primaryLight, color: theme.colors.primary }}
                 >
                     <LayoutGrid size={14} />
-                    All
+                    View All
                 </button>
             </div>
 

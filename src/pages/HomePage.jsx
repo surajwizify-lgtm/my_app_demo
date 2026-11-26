@@ -12,7 +12,7 @@ import BottomNav from '@/components/common/BottomNav'
 
 export default function HomePage() {
     return (
-        <PageTransition>
+        <div>
             <Navbar userName="John Doe" location="New York, US" />
             <div
                 style={{
@@ -29,8 +29,7 @@ export default function HomePage() {
                 <SpecialistsSection />
                 <HealthArticlesSection />
                 <ArticlesCategorySection />
-
             </div>
-        </PageTransition>
+        </div>
     )
 }

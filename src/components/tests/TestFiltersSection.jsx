@@ -1,7 +1,7 @@
 import { useState } from "react";
 import theme from "@/styles/theme";
 
-const FILTERS = ["All", "Popular", "Full Body", "Diabetes", "Heart", "Thyroid", "Vitamins"];
+const FILTERS = ["All", "Cardiology", "Diabetes", "Fever", "Gastroenterology", "Hematology", "Kidney", "Liver", "Neurology", "Obs & Gynae", "Orthopedics", "Respiratory", "Rheumatology"];
 
 export default function TestFiltersSection() {
     const [active, setActive] = useState("All");

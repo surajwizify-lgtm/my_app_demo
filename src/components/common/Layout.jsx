@@ -7,7 +7,6 @@ import NextPageButton from '@/components/common/NextPageButton'
 const HIDE_NAV_PATHS = [
     '/login',
     '/cart',
-    // '/orders',
     '/tests',
     '/pathology'
 ]
@@ -25,13 +24,19 @@ export default function Layout() {
                 maxWidth: '480px',
                 width: '100%',
                 margin: '0 auto',
-                paddingBottom: '80px',
                 backgroundColor: theme.colors.background,
-                minHeight: '100vh',
+                minHeight: '100dvh',
                 position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
             }}
         >
-            <div style={{ paddingBottom: shouldShowNav ? '50px' : '0px' }}>
+            <div
+                style={{
+                    flex: 1,
+                    paddingBottom: shouldShowNav ? '90px' : '0px'
+                }}
+            >
                 <AnimatePresence mode="wait">
                     <Outlet key={location.pathname} />
                 </AnimatePresence>
