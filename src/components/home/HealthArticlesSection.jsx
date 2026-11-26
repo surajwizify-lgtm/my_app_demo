@@ -7,25 +7,25 @@ const articles = [
         id: 1,
         title: 'Air pollution: how it hurts your lungs and how to stay safe Air pollution: how it hurts your lungs and how to stay',
         date: 'Nov 15',
-        image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=400&q=80',
+        image: 'https://latest.healthynxt.com/uploads/blogs/94ea79278d57ef48291765c11b23a995.webp',
     },
     {
         id: 2,
         title: 'Persistent cough: causes, risks and what to do next',
         date: 'Nov 08',
-        image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&q=80',
+        image: 'https://latest.healthynxt.com/uploads/blogs/67ca23e049ed65ecf98576240836798c.webp',
     },
     {
         id: 3,
         title: 'Heart health: simple habits that make a big difference',
         date: 'Oct 29',
-        image: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=400&q=80',
+        image: 'https://latest.healthynxt.com/uploads/blogs/94ea79278d57ef48291765c11b23a995.webp',
     },
     {
         id: 4,
         title: 'Diabetes management: a practical everyday guide',
         date: 'Oct 20',
-        image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80',
+        image: 'https://latest.healthynxt.com/uploads/blogs/67ca23e049ed65ecf98576240836798c.webp',
     },
 ]
 

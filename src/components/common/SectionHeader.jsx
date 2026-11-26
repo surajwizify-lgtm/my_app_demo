@@ -2,7 +2,7 @@ import theme from "@/styles/theme";
 
 export default function SectionHeader({ title, subtitle, actionLabel, onAction }) {
     return (
-        <div className="mb-4 mt-5 flex items-start justify-between px-2">
+        <div className="mb-4  flex items-start justify-between px-2">
             <div>
                 <h2
                     className="text-[22px] font-bold leading-tight"

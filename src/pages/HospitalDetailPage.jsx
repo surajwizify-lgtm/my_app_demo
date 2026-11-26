@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import HospitalHeader from "@/components/hospital/detail/hospitalHeader";
 import HospitalHeroSection from "@/components/hospital/detail/HospitalHeroSection";
 import HospitalTabsSection from "@/components/hospital/detail/HospitalTabsSection";
 import OverviewTab from "@/components/hospital/detail/OverviewTab";
@@ -46,11 +47,24 @@ export default function HospitalDetailPage() {
     const ActiveTab = TAB_COMPONENTS[activeTab];
 
     return (
-        <div style={{ backgroundColor: theme.colors.background, minHeight: "100vh" }}>
-            <HospitalHeroSection hospital={hospital} />
-            <HospitalTabsSection activeTab={activeTab} onChange={setActiveTab} />
-            <div className="pb-8">
-                <ActiveTab />
+        <div
+            className="flex flex-col w-full"
+            style={{
+                backgroundColor: theme.colors.background,
+                height: '100vh',
+                overflow: 'hidden'
+            }}
+        >
+            <div className="shrink-0 relative z-30">
+                <HospitalHeader />
+            </div>
+
+            <div className="flex-1 overflow-y-auto overflow-x-hidden">
+                <HospitalHeroSection hospital={hospital} />
+                <HospitalTabsSection activeTab={activeTab} onChange={setActiveTab} />
+                <div className="pb-8">
+                    <ActiveTab />
+                </div>
             </div>
         </div>
     );

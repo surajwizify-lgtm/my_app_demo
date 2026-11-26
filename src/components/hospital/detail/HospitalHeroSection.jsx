@@ -18,7 +18,7 @@ export default function HospitalHeroSection({ hospital }) {
                         className="h-full w-full object-cover"
                     />
 
-                    <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
+                    {/* <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
                         <button
                             type="button"
                             onClick={() => navigate(-1)}
@@ -34,7 +34,7 @@ export default function HospitalHeroSection({ hospital }) {
                         >
                             <Share2 size={14} color={theme.colors.textPrimary} />
                         </button>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="relative -mt-5 rounded-t-3xl px-5 " style={{ backgroundColor: theme.colors.surface }}>
