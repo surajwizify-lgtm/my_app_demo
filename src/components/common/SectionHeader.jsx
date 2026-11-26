@@ -20,7 +20,7 @@ export default function SectionHeader({ title, subtitle, actionLabel, onAction }
                 <button
                     type="button"
                     onClick={onAction}
-                    className="shrink-0 bg-blue-100 rounded-lg py-1 px-2 text-[13px] font-bold transition-transform active:scale-95"
+                    className="shrink-0 bg-blue-100 rounded-3xl py-2 px-4 text-[13px] font-bold transition-transform active:scale-95"
                     style={{ color: theme.colors.primary }}
                 >
                     {actionLabel}

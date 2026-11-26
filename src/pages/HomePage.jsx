@@ -9,6 +9,7 @@ import SpecialistsSection from '@/components/home/SpecialistsSection'
 import HealthArticlesSection from '@/components/home/HealthArticlesSection'
 import ArticlesCategorySection from '@/components/home/ArticlesCategorySection'
 import BottomNav from '@/components/common/BottomNav'
+import ArticlesCategorySection2 from '@/components/home/ArticlesCategorySection2'
 
 export default function HomePage() {
     return (
@@ -29,6 +30,7 @@ export default function HomePage() {
                 <SpecialistsSection />
                 <HealthArticlesSection />
                 <ArticlesCategorySection />
+                <ArticlesCategorySection2 />
             </div>
         </div>
     )
