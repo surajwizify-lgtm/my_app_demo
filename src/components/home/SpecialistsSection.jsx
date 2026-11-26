@@ -109,7 +109,7 @@ export default function SpecialistsSection() {
                                         exit={{ height: 0, opacity: 0 }}
                                         transition={{ duration: 0.2 }}
                                     >
-                                        <div className="px-4 pb-4">
+                                        <div className="px-2 pb-4">
                                             <div className="mb-4 flex flex-wrap gap-2">
                                                 {specialty.treatments.map((treatment) => (
                                                     <span

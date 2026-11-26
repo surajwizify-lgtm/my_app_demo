@@ -135,7 +135,7 @@ function Design3() {
                 </button>
                 <button
                     type="button"
-                    className="flex items-center justify-center rounded-2xl px-4 py-3 text-sm font-bold transition-transform active:scale-[0.98]"
+                    className="flex items-center justify-center rounded-2xl px-2 py-3 text-sm font-bold transition-transform active:scale-[0.98]"
                     style={{ backgroundColor: theme.colors.background, color: theme.colors.textPrimary }}
                 >
                     <MapPin size={16} color={theme.colors.danger} />

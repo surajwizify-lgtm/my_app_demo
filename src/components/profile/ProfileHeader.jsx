@@ -9,17 +9,17 @@ export default function ProfileHeader({ user, isEditing, onToggleEdit, onCancel 
             <div className="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-white/10" />
             <div className="absolute -right-4 bottom-0 h-20 w-20 rounded-full bg-white/5" />
 
-            <div className="relative z-10 flex items-center gap-3.5">
+            <div className="relative z-10 flex items-start gap-3.5">
                 <div className="relative shrink-0">
                     <div
                         className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2"
                         style={{ borderColor: "rgba(255,255,255,0.4)", backgroundColor: "rgba(255,255,255,0.15)" }}
                     >
-                        {user.avatar ? (
-                            <img src={user.avatar} alt={user.name} className="h-full w-full object-cover" />
-                        ) : (
-                            <User size={22} color={theme.colors.white} />
-                        )}
+                        <img
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt={user.name}
+                            className="h-full w-full object-cover"
+                        />
                     </div>
                     {isEditing && (
                         <button

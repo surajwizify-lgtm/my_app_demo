@@ -13,7 +13,7 @@ const FIELDS = [
 
 export default function ProfileFormSection({ formData, isEditing, onChange }) {
     return (
-        <div className="px-4 py-5">
+        <div className="px-2 py-5">
             <div
                 className="rounded-2xl p-4"
                 style={{

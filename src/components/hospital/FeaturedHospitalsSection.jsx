@@ -36,7 +36,7 @@ export default function FeaturedHospitalsSection() {
     const navigate = useNavigate();
 
     return (
-        <div className="px-4 pb-2">
+        <div className="px-2 pb-2">
             <div className="mb-3 flex items-center justify-between">
                 <h2 className="text-base font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
                     Featured Hospitals

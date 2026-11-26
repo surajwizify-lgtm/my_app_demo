@@ -79,10 +79,14 @@ export default function MenuDrawer({ isOpen, onClose }) {
 
                                 <div className="relative z-10 flex items-center gap-3">
                                     <div
-                                        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border text-base font-bold text-white"
-                                        style={{ borderColor: "rgba(255,255,255,0.4)", backgroundColor: "rgba(255,255,255,0.2)" }}
+                                        className="flex h-11 w-11 shrink-0 overflow-hidden rounded-full border"
+                                        style={{ borderColor: "rgba(255,255,255,0.4)" }}
                                     >
-                                        J
+                                        <img
+                                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                                            alt="User profile"
+                                            className="h-full w-full object-cover"
+                                        />
                                     </div>
                                     <div className="min-w-0 flex-1">
                                         <h2 className="truncate text-sm font-bold text-white" style={{ fontFamily: theme.fonts.heading }}>
@@ -93,7 +97,7 @@ export default function MenuDrawer({ isOpen, onClose }) {
                                 </div>
                             </div>
 
-                            <div className="flex-1 overflow-y-auto px-4 py-6">
+                            <div className="flex-1 overflow-y-auto px-2 py-6">
                                 <div className="flex flex-col gap-1">
                                     {NAV_ITEMS.map((item) => {
                                         const isActive = location.pathname === item.path
@@ -103,7 +107,7 @@ export default function MenuDrawer({ isOpen, onClose }) {
                                                 key={item.label}
                                                 type="button"
                                                 onClick={() => handleNavigation(item.path)}
-                                                className="flex items-center justify-between rounded-xl px-4 py-3.5 transition-colors"
+                                                className="flex items-center justify-between rounded-xl px-2 py-3.5 transition-colors"
                                                 style={{
                                                     backgroundColor: isActive ? theme.colors.primaryLight : "transparent",
                                                     color: isActive ? theme.colors.primary : theme.colors.textSecondary,
@@ -122,11 +126,11 @@ export default function MenuDrawer({ isOpen, onClose }) {
                                 </div>
                             </div>
 
-                            <div className="border-t px-4 py-4" style={{ borderColor: theme.colors.border }}>
+                            <div className="border-t px-2 py-4" style={{ borderColor: theme.colors.border }}>
                                 <button
                                     type="button"
                                     onClick={() => handleNavigation("/login")}
-                                    className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold transition-transform active:scale-[0.98]"
+                                    className="flex w-full items-center gap-3 rounded-xl px-2 py-3 text-sm font-bold transition-transform active:scale-[0.98]"
                                     style={{ backgroundColor: theme.colors.dangerLight, color: theme.colors.danger }}
                                 >
                                     <LogOut size={20} />

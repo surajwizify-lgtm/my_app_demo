@@ -10,7 +10,7 @@ const EXPERIENCES = [
 
 export default function PatientExperienceZoneTab() {
     return (
-        <div className="px-4 py-4">
+        <div className="px-2 py-4">
             <div className="mb-4">
                 <h2 className="text-lg font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
                     Patient Experience Zone

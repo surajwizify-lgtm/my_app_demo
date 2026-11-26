@@ -3,7 +3,7 @@ import theme from "@/styles/theme";
 
 export default function PrescriptionTab() {
     return (
-        <div className="px-4 py-4">
+        <div className="px-2 py-4">
             <button
                 type="button"
                 className="flex w-full flex-col items-start rounded-2xl p-5 text-left transition-transform active:scale-[0.98]"

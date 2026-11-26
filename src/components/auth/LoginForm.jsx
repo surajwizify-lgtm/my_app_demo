@@ -39,7 +39,7 @@ export default function LoginForm() {
                                     Phone Number
                                 </label>
                                 <div
-                                    className="flex items-center gap-3 rounded-2xl px-4 py-3.5 transition-colors"
+                                    className="flex items-center gap-3 rounded-2xl px-2 py-3.5 transition-colors"
                                     style={{ backgroundColor: theme.colors.background, border: `1px solid ${theme.colors.border}` }}
                                 >
                                     <span className="text-sm font-bold" style={{ color: theme.colors.textPrimary }}>+91</span>
@@ -105,7 +105,7 @@ export default function LoginForm() {
                                     value={otp}
                                     onChange={(e) => setOtp(e.target.value.replace(/\D/g, "").slice(0, 6))}
                                     placeholder="------"
-                                    className="w-full rounded-2xl px-4 py-4 text-center text-2xl font-bold tracking-[0.5em] outline-none"
+                                    className="w-full rounded-2xl px-2 py-4 text-center text-2xl font-bold tracking-[0.5em] outline-none"
                                     style={{ backgroundColor: theme.colors.background, border: `1px solid ${theme.colors.border}`, color: theme.colors.textPrimary }}
                                 />
                             </div>

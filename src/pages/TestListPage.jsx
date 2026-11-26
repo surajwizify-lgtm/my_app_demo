@@ -32,7 +32,7 @@ export default function TestListPage() {
             </div>
 
             <div className="flex-1 w-full overflow-y-auto overflow-x-hidden">
-                <div className="flex flex-col gap-3 px-4 pb-8 pt-1">
+                <div className="flex flex-col gap-3 px-2 pb-8 pt-1">
                     {TESTS.map((test) => (
                         <TestItemCard key={test.id} test={test} />
                     ))}

@@ -4,7 +4,7 @@ import theme from "@/styles/theme";
 export default function CartCheckoutBar({ total }) {
     return (
         <div
-            className="fixed bottom-0 left-0 right-0 z-30 mx-auto flex max-w-[390px] items-center justify-between gap-3 px-4 py-3"
+            className="fixed bottom-0 left-0 right-0 z-30 mx-auto flex max-w-[390px] items-center justify-between gap-3 px-2 py-3"
             style={{
                 backgroundColor: theme.colors.surface,
                 borderTop: `1px solid ${theme.colors.border}`,

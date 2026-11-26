@@ -13,7 +13,7 @@ export default function ReportDoctorsTab() {
     const [selected, setSelected] = useState(null);
 
     return (
-        <div className="px-4 py-4">
+        <div className="px-2 py-4">
             <div className="mb-4">
                 <h2 className="text-lg font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
                     Our Specialists
@@ -72,7 +72,7 @@ export default function ReportDoctorsTab() {
                         <div className="flex justify-center pt-3">
                             <div className="h-1 w-10 rounded-full" style={{ backgroundColor: theme.colors.border }} />
                         </div>
-                        <div className="flex justify-end px-4 pt-2">
+                        <div className="flex justify-end px-2 pt-2">
                             <button type="button" onClick={() => setSelected(null)}>
                                 <X size={20} color={theme.colors.textMuted} />
                             </button>

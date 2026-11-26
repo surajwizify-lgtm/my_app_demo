@@ -30,7 +30,7 @@ export default function HospitalTabsSection({ activeTab, onChange }) {
     return (
         <>
             <div
-                className="sticky top-0 z-20 flex items-center gap-2 py-3 px-4 overflow-x-auto no-scrollbar"
+                className="sticky top-0 z-20 flex items-center gap-2 py-3 px-2 overflow-x-auto no-scrollbar"
                 style={{ backgroundColor: theme.colors.background }}
             >
                 {PRIMARY_TABS.map((tab) => {
@@ -106,7 +106,7 @@ export default function HospitalTabsSection({ activeTab, onChange }) {
                                                 key={tab}
                                                 type="button"
                                                 onClick={() => handleSelect(tab)}
-                                                className="flex items-center justify-between rounded-xl px-4 py-3 transition-colors"
+                                                className="flex items-center justify-between rounded-xl px-2 py-3 transition-colors"
                                                 style={{
                                                     backgroundColor: isActive ? theme.colors.primaryLight : theme.colors.background,
                                                 }}

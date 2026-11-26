@@ -23,7 +23,7 @@ export default function OrdersPage() {
             }}
         >
             <div
-                className="shrink-0 relative overflow-hidden flex items-center rounded-bl-3xl rounded-br-3xl gap-3 px-4 py-4"
+                className="shrink-0 relative overflow-hidden flex items-center rounded-bl-3xl rounded-br-3xl gap-3 px-2 py-4"
                 style={{ backgroundColor: theme.colors.primary, borderBottom: `1px solid ${theme.colors.border}` }}
             >
                 <div
@@ -53,7 +53,7 @@ export default function OrdersPage() {
             </div>
 
             <div className="flex-1 w-full overflow-y-auto overflow-x-hidden">
-                <div className="flex flex-col gap-3 px-4 py-4 pb-28">
+                <div className="flex flex-col gap-3 px-2 py-4 pb-28">
                     {ORDERS.map((order) => (
                         <OrderCard key={order.id} order={order} />
                     ))}

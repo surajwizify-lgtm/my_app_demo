@@ -7,7 +7,7 @@ export default function TestHeader() {
 
     return (
         <div
-            className="sticky top-0 z-30 flex items-center rounded-bl-3xl rounded-br-3xl justify-between px-4 py-4"
+            className="sticky top-0 z-30 flex items-center rounded-bl-3xl rounded-br-3xl justify-between px-2 py-4"
             style={{ backgroundColor: theme.colors.primary, borderBottom: `1px solid ${theme.colors.border}` }}
         >
             <div

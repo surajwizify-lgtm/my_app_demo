@@ -17,7 +17,7 @@ export default function PackagesTab() {
     const filtered = PACKAGES.filter((p) => p.type === mode);
 
     return (
-        <div className="px-4 py-4">
+        <div className="px-2 py-4">
             <div className="mb-4 flex items-center justify-between">
                 <div>
                     <h2 className="text-lg font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>

@@ -15,7 +15,7 @@ export default function HospitalListSection() {
     const navigate = useNavigate();
 
     return (
-        <div className="px-4 pb-4">
+        <div className="px-2 pb-4">
             <div className="mb-3 flex items-center justify-between">
                 <h2 className="text-lg font-bold" style={{ color: theme.colors.textPrimary, fontFamily: theme.fonts.heading }}>
                     All Hospitals

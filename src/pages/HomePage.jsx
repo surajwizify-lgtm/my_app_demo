@@ -17,14 +17,16 @@ export default function HomePage() {
             <Navbar userName="John Doe" location="New York, US" />
             <div
                 style={{
-                    padding: `${theme.spacing.md} ${theme.spacing.md}`,
+                    padding: `${theme.spacing.sm} ${theme.spacing.sm}`,
                     display: 'flex',
                     flexDirection: 'column',
                     gap: theme.spacing.lg,
                 }}
             >
                 {/* <SearchSection /> */}
-                <EmergencySection />
+                <div className='mt-5'>
+                    <EmergencySection />
+                </div>
                 <DepartmentsSection />
                 <CampaignSection />
                 <SpecialistsSection />

@@ -6,7 +6,7 @@ export default function HospitalHeroSection({ hospital }) {
     const navigate = useNavigate();
 
     return (
-        <div className="px-4 pt-4 pb-2">
+        <div className="px-2 pt-4 pb-2">
             <div
                 className="w-full overflow-hidden rounded-3xl bg-white"
                 style={{ boxShadow: theme.shadows.soft, border: `1px solid ${theme.colors.border}` }}

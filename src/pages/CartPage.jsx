@@ -44,7 +44,7 @@ export default function CartPage() {
             {cartItems.length === 0 ? (
                 <CartEmptyState />
             ) : (
-                <div className="flex flex-col gap-4 px-4 py-4 pb-28">
+                <div className="flex flex-col gap-4 px-2 py-4 pb-28">
                     <div className="flex flex-col gap-3">
                         {cartItems.map((item) => (
                             <CartItemCard

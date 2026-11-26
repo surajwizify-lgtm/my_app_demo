@@ -3,9 +3,9 @@ import theme from "@/styles/theme";
 
 export default function TestSearchSection() {
     return (
-        <div className="px-4 pt-4 pb-2">
+        <div className="px-2 pt-4 pb-2">
             <div
-                className="flex items-center gap-2 rounded-full px-4 py-3"
+                className="flex items-center gap-2 rounded-full px-2 py-3"
                 style={{ backgroundColor: theme.colors.surface, border: `1px solid ${theme.colors.border}` }}
             >
                 <Search size={18} color={theme.colors.textMuted} />

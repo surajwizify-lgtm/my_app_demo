@@ -11,7 +11,6 @@ export default function Navbar() {
                 className="relative overflow-hidden px-5 -z-10 pt-[calc(env(safe-area-inset-top,0px)+22px)] pb-16 rounded-b-[32px]"
                 style={{ background: `linear-gradient(160deg, ${theme.colors.primary} 0%, ${theme.colors.primaryDark} 100%)` }}
             >
-                {/* Decorative circles */}
                 <div
                     className="absolute -top-6 -right-6 w-48 h-48 rounded-full"
                     style={{ background: 'rgba(255,255,255,0.1)' }}
@@ -22,19 +21,17 @@ export default function Navbar() {
                 />
 
                 <div className="flex items-center gap-4 relative z-10">
-                    {/* Avatar */}
                     <div
-                        className="w-[54px] h-[54px] rounded-full flex items-center justify-center font-bold text-[22px] shrink-0"
-                        style={{
-                            background: 'rgba(255,255,255,0.2)',
-                            border: '2px solid rgba(255,255,255,0.4)',
-                            color: theme.colors.white
-                        }}
+                        className="w-[54px] h-[54px] rounded-full shrink-0 overflow-hidden"
+                        style={{ border: '2px solid rgba(255,255,255,0.4)' }}
                     >
-                        J
+                        <img
+                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                            alt="User profile"
+                            className="w-full h-full object-cover"
+                        />
                     </div>
 
-                    {/* Text */}
                     <div className="flex-1 min-w-0">
                         <strong
                             className="block text-lg font-bold leading-tight"
@@ -46,10 +43,8 @@ export default function Navbar() {
                             <MapPin size={12} strokeWidth={2.4} className="shrink-0" />
                             <span className="truncate">Badshah Nagar, Mahanagar</span>
                         </div>
-
                     </div>
 
-                    {/* Bell */}
                     <button
                         aria-label="Notifications"
                         className="relative w-[46px] h-[46px] rounded-full flex items-center justify-center shrink-0"
@@ -70,10 +65,9 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Search bar */}
             <div
                 onClick={() => navigate('/hospitals')}
-                className="flex items-center gap-2 mx-5 -mt-14 px-4 h-14 rounded-full shadow-md cursor-pointer"
+                className="flex items-center gap-2 mx-5 -mt-14 px-2 h-12 rounded-full shadow-md cursor-pointer"
                 style={{
                     backgroundColor: theme.colors.surface,
                     border: `1px solid ${theme.colors.border}`
