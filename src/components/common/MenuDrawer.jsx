@@ -1,15 +1,37 @@
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Home, Hospital, FlaskConical, Package, ShoppingCart, User, LogOut, ChevronRight } from "lucide-react"
+import {
+    X,
+    Home,
+    Hospital,
+    FlaskConical,
+    Package,
+    ShoppingCart,
+    User,
+    LogOut,
+    ChevronRight,
+    ClipboardList,
+    Info,
+    ShieldCheck,
+    ScrollText,
+    Star,
+    Share2
+} from "lucide-react"
 import { useNavigate, useLocation } from "react-router-dom"
 import theme from "@/styles/theme"
 
 const NAV_ITEMS = [
     { label: "Home", path: "/", icon: Home },
     { label: "Hospitals", path: "/hospitals", icon: Hospital },
+    { label: "My Profile", path: "/profile", icon: User },
     { label: "Lab Tests", path: "/tests", icon: FlaskConical },
     { label: "My Orders", path: "/orders", icon: Package },
     { label: "My Cart", path: "/cart", icon: ShoppingCart },
-    { label: "My Profile", path: "/profile", icon: User },
+    { label: "My Prescription", path: "/prescriptions", icon: ClipboardList },
+    { label: "About Us", path: "/about", icon: Info },
+    { label: "Privacy Policy", path: "/privacy", icon: ShieldCheck },
+    { label: "Terms & Conditions", path: "/terms", icon: ScrollText },
+    { label: "Rate App", path: "/rate", icon: Star },
+    { label: "Share App", path: "/share", icon: Share2 },
 ]
 
 export default function MenuDrawer({ isOpen, onClose }) {
@@ -24,7 +46,7 @@ export default function MenuDrawer({ isOpen, onClose }) {
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[100] flex justify-center">
+                <div className="fixed inset-0 z-[100]  flex justify-center">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -32,7 +54,7 @@ export default function MenuDrawer({ isOpen, onClose }) {
                         onClick={onClose}
                         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
                     />
-                    <div className="relative h-full w-full max-w-[480px] pointer-events-none">
+                    <div className="relative h-full w-full  max-w-[480px] pointer-events-none">
                         <motion.div
                             initial={{ x: "-100%" }}
                             animate={{ x: 0 }}

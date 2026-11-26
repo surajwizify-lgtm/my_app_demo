@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import HospitalHeroSection from "@/components/hospital/detail/HospitalHeroSection";
 import HospitalTabsSection from "@/components/hospital/detail/HospitalTabsSection";
+import OverviewTab from "@/components/hospital/detail/OverviewTab";
 import WhyChooseUsTab from "@/components/hospital/detail/WhyChooseUsTab";
 import ServicesTab from "@/components/hospital/detail/ServicesTab";
 import TestTab from "@/components/hospital/detail/TestTab";
@@ -24,6 +25,7 @@ const HOSPITALS = {
 };
 
 const TAB_COMPONENTS = {
+    "Overview": OverviewTab,
     "Why Choose Us": WhyChooseUsTab,
     "Services": ServicesTab,
     "Test": TestTab,
@@ -38,13 +40,13 @@ const TAB_COMPONENTS = {
 
 export default function HospitalDetailPage() {
     const { id } = useParams();
-    const [activeTab, setActiveTab] = useState("Why Choose Us");
+    const [activeTab, setActiveTab] = useState("Overview");
 
     const hospital = HOSPITALS[id] || HOSPITALS["1"];
     const ActiveTab = TAB_COMPONENTS[activeTab];
 
     return (
-        <div style={{ margin: "0 auto", position: "relative", minHeight: "100vh", backgroundColor: theme.colors.background }}>
+        <div style={{ backgroundColor: theme.colors.background, minHeight: "100vh" }}>
             <HospitalHeroSection hospital={hospital} />
             <HospitalTabsSection activeTab={activeTab} onChange={setActiveTab} />
             <div className="pb-8">

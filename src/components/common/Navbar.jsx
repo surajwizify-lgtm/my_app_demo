@@ -36,16 +36,17 @@ export default function Navbar() {
 
                     {/* Text */}
                     <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1 text-[13px] mb-0.5" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                            <MapPin size={12} strokeWidth={2.4} className="shrink-0" />
-                            <span className="truncate">Badshah Nagar, Mahanagar</span>
-                        </div>
                         <strong
-                            className="block text-[26px] font-bold leading-tight"
+                            className="block text-lg font-bold leading-tight"
                             style={{ fontFamily: theme.fonts.heading, color: theme.colors.white }}
                         >
                             Hello, Javed
                         </strong>
+                        <div className="flex items-center gap-1 text-[13px] mb-0.5" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                            <MapPin size={12} strokeWidth={2.4} className="shrink-0" />
+                            <span className="truncate">Badshah Nagar, Mahanagar</span>
+                        </div>
+
                     </div>
 
                     {/* Bell */}

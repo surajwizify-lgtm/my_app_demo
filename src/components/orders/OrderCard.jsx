@@ -1,79 +1,61 @@
-import { Calendar, FileText, FlaskConical, ChevronRight } from "lucide-react";
+import { FlaskConical, ChevronRight } from "lucide-react";
 import theme from "@/styles/theme";
 
 export default function OrderCard({ order }) {
     return (
         <div
-            className="flex flex-col overflow-hidden rounded-2xl"
+            className="flex flex-col rounded-xl p-3"
             style={{
                 backgroundColor: theme.colors.surface,
                 border: `1px solid ${theme.colors.border}`,
                 boxShadow: theme.shadows.soft,
             }}
         >
-            <div className="p-4">
-                <div className="mb-4 flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-2.5">
-                        <div
-                            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
-                            style={{ backgroundColor: theme.colors.primaryLight }}
-                        >
-                            <FlaskConical size={20} color={theme.colors.primary} />
-                        </div>
-                        <div className="min-w-0">
-                            <h3 className="truncate text-[14px] font-bold leading-tight" style={{ color: theme.colors.textPrimary }}>
-                                {order.labName}
-                            </h3>
-                            <p className="mt-0.5 text-[11px]" style={{ color: theme.colors.textMuted }}>
-                                {order.bookingType || "Lab Test"}
-                            </p>
-                        </div>
-                    </div>
-                    <span
-                        className="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider"
-                        style={{ backgroundColor: theme.colors.secondaryLight, color: theme.colors.secondary }}
+            <div className="flex items-start justify-between gap-2 mb-2">
+                <div className="flex items-center gap-2.5">
+                    <div
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
+                        style={{ backgroundColor: theme.colors.primaryLight }}
                     >
-                        {order.status}
-                    </span>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2 text-[12px]">
-                        <Calendar size={14} color={theme.colors.textMuted} />
-                        <span style={{ color: theme.colors.textSecondary }}>Placed on:</span>
-                        <span className="font-semibold" style={{ color: theme.colors.textPrimary }}>
-                            {order.date}
-                        </span>
+                        <FlaskConical size={14} color={theme.colors.primary} />
                     </div>
-                    <div className="flex items-center gap-2 text-[12px]">
-                        <FileText size={14} color={theme.colors.textMuted} />
-                        <span style={{ color: theme.colors.textSecondary }}>Order No:</span>
-                        <span className="font-semibold" style={{ color: theme.colors.textPrimary }}>
-                            {order.orderNo}
-                        </span>
+                    <div>
+                        <h3 className="text-[14px] font-bold leading-tight" style={{ color: theme.colors.textPrimary }}>
+                            {order.labName}
+                        </h3>
+                        <p className="text-[10px]" style={{ color: theme.colors.textSecondary }}>
+                            {order.bookingType || "Lab Test"}
+                        </p>
                     </div>
                 </div>
+                <span
+                    className="shrink-0 rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider"
+                    style={{ backgroundColor: theme.colors.secondaryLight, color: theme.colors.secondary }}
+                >
+                    {order.status}
+                </span>
             </div>
 
             <div
-                className="flex items-center justify-between px-4 py-3"
-                style={{ backgroundColor: theme.colors.background, borderTop: `1px solid ${theme.colors.border}` }}
+                className="flex justify-between items-center text-[11px] mb-2 border-b pb-2"
+                style={{ color: theme.colors.textSecondary, borderColor: theme.colors.border }}
             >
-                <div className="flex items-baseline gap-1.5">
-                    <span className="text-[11px]" style={{ color: theme.colors.textSecondary }}>
-                        Amount:
-                    </span>
-                    <span className="text-[15px] font-bold" style={{ color: theme.colors.textPrimary }}>
-                        {order.amount}
-                    </span>
+                <span>{order.date}</span>
+                <span>Order: <strong style={{ color: theme.colors.textPrimary }}>{order.orderNo}</strong></span>
+            </div>
+
+            <div className="flex justify-between items-center mt-1">
+                <div className="flex items-baseline gap-1">
+                    <span className="text-[10px]" style={{ color: theme.colors.textSecondary }}>Total:</span>
+                    <span className="text-[14px] font-bold" style={{ color: theme.colors.textPrimary }}>{order.amount}</span>
                 </div>
                 <button
                     type="button"
-                    className="flex items-center gap-0.5 text-[12px] font-bold transition-transform active:scale-95"
+                    className="flex items-center gap-0.5 text-[11px] font-bold transition-transform active:scale-95"
                     style={{ color: theme.colors.primary }}
                 >
-                    View Details
-                    <ChevronRight size={14} />
+                    Details
+                    <ChevronRight size={12} />
                 </button>
             </div>
         </div>

@@ -97,7 +97,7 @@ export default function HealthArticlesSection() {
                             <h4
                                 style={{
                                     margin: 0,
-                                    fontSize: theme.fontSizes.sm,
+                                    fontSize: theme.fontSizes.md,
                                     fontWeight: '700',
                                     color: theme.colors.textPrimary,
                                     lineHeight: '1.4',

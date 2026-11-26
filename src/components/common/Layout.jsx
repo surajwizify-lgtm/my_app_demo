@@ -36,7 +36,7 @@ export default function Layout() {
                     <Outlet key={location.pathname} />
                 </AnimatePresence>
             </div>
-            {shouldShowNav && <BottomNav />}
+            {<BottomNav />}
             {/* {shouldShowNav && <NextPageButton />} */}
         </div>
     )

@@ -94,7 +94,7 @@ export default function ArticlesCategorySection() {
                             <h4
                                 style={{
                                     margin: 0,
-                                    fontSize: theme.fontSizes.sm,
+                                    fontSize: theme.fontSizes.md,
                                     fontWeight: '700',
                                     color: theme.colors.textPrimary,
                                     lineHeight: '1.3',
@@ -105,7 +105,7 @@ export default function ArticlesCategorySection() {
                             <p
                                 style={{
                                     margin: '2px 0 0',
-                                    fontSize: theme.fontSizes.xs,
+                                    fontSize: theme.fontSizes.sm,
                                     color: theme.colors.textSecondary,
                                 }}
                             >
