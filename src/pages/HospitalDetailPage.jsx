@@ -51,11 +51,11 @@ export default function HospitalDetailPage() {
             className="flex flex-col w-full"
             style={{
                 backgroundColor: theme.colors.background,
-                height: '100vh',
+                height: '100dvh',
                 overflow: 'hidden'
             }}
         >
-            <div className="shrink-0 relative z-30">
+            <div className="shrink-0 relative z-30 bg-white">
                 <HospitalHeader />
             </div>
 

@@ -21,17 +21,17 @@ export default function TestListPage() {
             className="flex flex-col w-full"
             style={{
                 backgroundColor: theme.colors.background,
-                height: '100vh',
+                height: '100dvh',
                 overflow: 'hidden'
             }}
         >
             <div className="shrink-0 w-full">
                 <TestHeader />
-                <TestSearchSection />
-                <TestFiltersSection />
             </div>
 
             <div className="flex-1 w-full overflow-y-auto overflow-x-hidden">
+                <TestSearchSection />
+                <TestFiltersSection />
                 <div className="flex flex-col gap-3 px-2 pb-8 pt-1">
                     {TESTS.map((test) => (
                         <TestItemCard key={test.id} test={test} />

@@ -8,7 +8,8 @@ const HIDE_NAV_PATHS = [
     '/login',
     '/cart',
     '/tests',
-    '/pathology'
+    '/pathology',
+    '/hospitals/:id'
 ]
 
 export default function Layout() {
@@ -41,7 +42,7 @@ export default function Layout() {
                     <Outlet key={location.pathname} />
                 </AnimatePresence>
             </div>
-            {<BottomNav />}
+            {shouldShowNav && <BottomNav />}
             {/* {shouldShowNav && <NextPageButton />} */}
         </div>
     )

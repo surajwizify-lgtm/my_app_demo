@@ -8,7 +8,10 @@ export default function TestFiltersSection() {
 
     return (
         <div className="px-2 pb-3">
-            <div className="flex gap-2 overflow-x-auto no-scrollbar">
+            <div
+                className="flex gap-2 overflow-x-auto"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
                 {FILTERS.map((filter) => {
                     const isActive = active === filter;
                     return (
@@ -16,7 +19,7 @@ export default function TestFiltersSection() {
                             key={filter}
                             type="button"
                             onClick={() => setActive(filter)}
-                            className="shrink-0 rounded-full px-2 py-2 text-[12px] font-semibold transition-colors"
+                            className="shrink-0 rounded-full px-4 py-2 text-[12px] font-semibold transition-colors"
                             style={{
                                 backgroundColor: isActive ? theme.colors.primary : theme.colors.surface,
                                 color: isActive ? "#fff" : theme.colors.textPrimary,
