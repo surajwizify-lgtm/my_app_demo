@@ -18,7 +18,7 @@ export default function OverviewTab() {
             <ReportDoctorsTab />
             <FacilityTourTab />
             <ReviewsTab />
-            <PrescriptionTab />
+            {/* <PrescriptionTab /> */}
             <ScopeOfServicesTab />
             <PackagesTab />
             <PatientExperienceZoneTab />

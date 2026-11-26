@@ -60,12 +60,12 @@ export default function ReportDoctorsTab() {
 
             {selected && (
                 <div
-                    className="fixed inset-0 z-50 flex items-end justify-center"
+                    className="fixed inset-0 z-50 flex items-end pb-20  justify-center"
                     style={{ backgroundColor: "rgba(15,42,58,0.55)" }}
                     onClick={() => setSelected(null)}
                 >
                     <div
-                        className="w-full max-w-[390px] rounded-t-3xl"
+                        className="w-full max-w-[390px] rounded-3xl"
                         style={{ backgroundColor: theme.colors.surface }}
                         onClick={(e) => e.stopPropagation()}
                     >

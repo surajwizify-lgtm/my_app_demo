@@ -86,8 +86,8 @@ export default function ArticlesCategorySection() {
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: theme.spacing.sm }}>
                             <div
                                 style={{
-                                    width: '48px',
-                                    height: '48px',
+                                    width: '60px',
+                                    height: '60px',
                                     borderRadius: '50%',
                                     padding: '3px',
                                     backgroundColor: theme.colors.white,

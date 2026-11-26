@@ -63,10 +63,10 @@ export default function HospitalHeroSection({ hospital }) {
                         <MapPin size={12} /> {hospital.location} • {hospital.distance}
                     </p>
 
-                    <div className="mt-4 grid grid-cols-3 gap-2">
+                    <div className="mt-4 grid grid-cols-3 pb-2 gap-2">
                         <button
                             type="button"
-                            className="flex flex-col items-center justify-center gap-1 rounded-xl py-2.5"
+                            className="flex flex-col items-center justify-center gap-1 rounded-2xl py-2.5"
                             style={{ backgroundColor: theme.colors.background, border: `1px solid ${theme.colors.border}` }}
                         >
                             <Phone size={16} color={theme.colors.primary} />
@@ -74,7 +74,7 @@ export default function HospitalHeroSection({ hospital }) {
                         </button>
                         <button
                             type="button"
-                            className="flex flex-col items-center justify-center gap-1 rounded-xl py-2.5"
+                            className="flex flex-col items-center justify-center gap-1 rounded-2xl py-2.5"
                             style={{ backgroundColor: theme.colors.background, border: `1px solid ${theme.colors.border}` }}
                         >
                             <Navigation size={16} color={theme.colors.secondary} />
@@ -82,7 +82,7 @@ export default function HospitalHeroSection({ hospital }) {
                         </button>
                         <button
                             type="button"
-                            className="flex flex-col items-center justify-center gap-1 rounded-xl py-2.5"
+                            className="flex flex-col items-center justify-center gap-1 rounded-2xl py-2.5"
                             style={{ backgroundColor: theme.colors.background, border: `1px solid ${theme.colors.border}` }}
                         >
                             <Clock size={16} color={theme.colors.success} />
